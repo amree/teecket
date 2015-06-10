@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.description = "Search ticket's fare for all major airlines in Malaysia at once"
   s.authors     = ['Amree Zaid']
   s.email       = 'mohd.amree@gmail.com'
-  s.files       = Dir.glob("{bin,lib}/**/*")
+  s.files       = Dir.glob("{bin,lib}/**/*") + %w(README.md)
   s.homepage    = 'https://github.com/amree/teecket'
   s.license     = 'MIT'
 
