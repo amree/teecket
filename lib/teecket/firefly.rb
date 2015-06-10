@@ -15,8 +15,6 @@ class Firefly < Flight
 
     cookie = res['Set-Cookie']
 
-    # byebug
-
     uri = URI('https://m.fireflyz.com.my/Search')
 
     http = Net::HTTP.new(uri.host, uri.port)
@@ -26,8 +24,6 @@ class Firefly < Flight
     req = Net::HTTP::Get.new(uri.path, initheader = { 'Cookie' => cookie})
 
     cookie = res['Set-Cookie']
-
-    # byebug
 
     uri = URI('https://m.fireflyz.com.my/Search')
 
@@ -39,8 +35,6 @@ class Firefly < Flight
     req.body = 'type=2&departure_station=KBR&arrival_station=SZB&departure_date=30%2F06%2F2015&return_date=30%2F06%2F2015&adult=1&infant=0'
 
     res = http.request(req)
-
-    # byebug
 
     if res['location']
       uri = URI(res['location'])
