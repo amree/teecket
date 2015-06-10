@@ -39,12 +39,20 @@ class MalindoAir < Flight
           arrive_at     = rs['ArrivalDate']
           fare          = rs['FlightAmount']
           flight_number = rs['MACode'] + rs['FlightNo']
+          origin        = rs['DepCity']
+          destination   = rs['ArrCity']
 
           depart_at     = DateTime.strptime(depart_at.gsub(/^\/Date\(|\)\//, ''), '%Q').strftime('%I:%M %p')
           arrive_at     = DateTime.strptime(arrive_at.gsub(/^\/Date\(|\)\//, ''), '%Q').strftime('%I:%M %p')
           fare          = sprintf("%.2f", fare)
 
-          fares << [ 'Malindo Air', flight_number, depart_at, arrive_at, fare ]
+          fares << { flight_name: 'Malindo Air',
+                     flight_number: flight_number,
+                     origin: origin,
+                     destination: destination,
+                     depart_at: depart_at,
+                     arrive_at: arrive_at,
+                     fare: fare }
         end
       end
     end

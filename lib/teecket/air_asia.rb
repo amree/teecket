@@ -20,13 +20,21 @@ class AirAsia < Flight
           arrive_at     = DateTime.parse(rs['segments'][0]['arrival-datetime'])
           fare          = rs['total']['adult']
           flight_number = rs['segments'][0]['flight-number']
+          origin        = rs['segments'][0]['origincode']
+          destination   = rs['segments'][0]['destinationcode']
 
           depart_at     = depart_at.strftime('%I:%M %p')
           arrive_at     = arrive_at.strftime('%I:%M %p')
           fare          = sprintf("%.2f", fare)
           flight_number = flight_number.gsub(/ /, '')
 
-          fares << [ 'AirAsia', flight_number, depart_at, arrive_at, fare ]
+          fares << { flight_name: 'AirAsia',
+                     flight_number: flight_number,
+                     origin: origin,
+                     destination: destination,
+                     depart_at: depart_at,
+                     arrive_at: arrive_at,
+                     fare: fare }
         end
       rescue StandardError
       end
