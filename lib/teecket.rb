@@ -1,3 +1,5 @@
+require 'date'
+
 require 'teecket/flight'
 require 'teecket/air_asia'
 require 'teecket/malaysia_airlines'
