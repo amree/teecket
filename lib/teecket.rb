@@ -5,8 +5,6 @@ require 'teecket/malindo_air'
 require 'teecket/printer'
 require 'teecket/firefly'
 
-require 'byebug'
-
 class Teecket
   def self.search(params)
     airasia = AirAsia.new({ from: params[:from], to: params[:to], date: params[:date] })
