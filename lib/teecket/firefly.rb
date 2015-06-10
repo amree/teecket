@@ -32,7 +32,7 @@ class Firefly < Flight
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
     req = Net::HTTP::Post.new(uri.path, initheader = { 'Cookie' => cookie})
-    req.body = 'type=2&departure_station=KBR&arrival_station=SZB&departure_date=30%2F06%2F2015&return_date=30%2F06%2F2015&adult=1&infant=0'
+    req.body = "type=2&departure_station=#{from}&arrival_station=#{to}&departure_date=#{date}&return_date=30%2F06%2F2015&adult=1&infant=0"
 
     res = http.request(req)
 
