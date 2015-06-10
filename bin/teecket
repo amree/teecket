@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require 'teecket'
+
+if ARGV.count == 3
+  Teecket.search({ from: ARGV[0], to: ARGV[1], date: ARGV[2]})
+else
+  puts 'Example: teecket KBR KUL 30-07-2015'
+end
+
