@@ -6,11 +6,12 @@ Gem::Specification.new do |s|
   s.description = "Search ticket's fare for all major airlines in Malaysia at once"
   s.authors     = ['Amree Zaid']
   s.email       = 'mohd.amree@gmail.com'
-  s.files       = ["lib/teecket.rb"]
+  s.files       = Dir.glob("{bin,lib}/**/*")
   s.homepage    = 'https://github.com/amree/teecket'
   s.license     = 'MIT'
 
   s.add_runtime_dependency 'terminal-table', '~> 1.4.5'
+  s.add_runtime_dependency 'nokogiri', '~> 1.6.6.2'
 
   s.add_development_dependency 'byebug', '~> 5.0.0'
 end
