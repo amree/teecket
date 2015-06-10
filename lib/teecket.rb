@@ -20,6 +20,6 @@ class Teecket
     malindo = MalindoAir.new({ from: params[:from], to: params[:to], date: params[:date] })
     malindo.get
 
-    output = airasia.fares + mas.fares + malindo.fares + firefly.fares
+    airasia.fares + mas.fares + malindo.fares + firefly.fares
   end
 end
