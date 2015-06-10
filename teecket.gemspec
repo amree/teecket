@@ -1,4 +1,4 @@
-Gem::Specifications do |s|
+Gem::Specification.new do |s|
   s.name        = 'teecket'
   s.version     = '0.0.1'
   s.date        = '2015-06-09'
@@ -9,4 +9,8 @@ Gem::Specifications do |s|
   s.files       = ["lib/teecket.rb"]
   s.homepage    = 'https://github.com/amree/teecket'
   s.license     = 'MIT'
+
+  s.add_runtime_dependency 'terminal-table', '~> 1.4.5'
+
+  s.add_development_dependency 'byebug', '~> 5.0.0'
 end
