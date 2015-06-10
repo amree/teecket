@@ -26,7 +26,7 @@ class MalaysiaAirlines < Flight
 
         depart_at = depart_at.strftime('%I:%M %p')
         arrive_at = arrive_at.strftime('%I:%M %p')
-        fare      = sprintf "%.2f", fare
+        fare      = sprintf("%.2f", fare)
 
         fares << [ 'Malaysia Airlines', flight_number, depart_at, arrive_at, fare ]
       end

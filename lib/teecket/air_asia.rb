@@ -23,7 +23,7 @@ class AirAsia < Flight
 
           depart_at     = depart_at.strftime('%I:%M %p')
           arrive_at     = arrive_at.strftime('%I:%M %p')
-          fare          = sprintf "%.2f", fare
+          fare          = sprintf("%.2f", fare)
           flight_number = flight_number.gsub(/ /, '')
 
           fares << [ 'AirAsia', flight_number, depart_at, arrive_at, fare ]
