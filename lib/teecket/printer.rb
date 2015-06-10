@@ -7,8 +7,8 @@ class Printer
 
     rows.each { |row| row[:fare] = row[:fare].rjust(9, ' ') }
 
-    new_rows = rows.map { |row| row.values }
+    rows.map! { |row| row.values }
 
-    Terminal::Table.new(headings: headings, rows: new_rows)
+    Terminal::Table.new(headings: headings, rows: rows)
   end
 end
