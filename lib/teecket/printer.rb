@@ -1,5 +1,4 @@
 require 'terminal-table'
-require 'byebug'
 
 class Printer
   def self.table(rows = [])
