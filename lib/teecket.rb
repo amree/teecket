@@ -4,7 +4,6 @@ require 'teecket/flight'
 require 'teecket/air_asia'
 require 'teecket/malaysia_airlines'
 require 'teecket/malindo_air'
-require 'teecket/printer'
 require 'teecket/firefly'
 
 class Teecket
@@ -21,8 +20,6 @@ class Teecket
     malindo = MalindoAir.new({ from: params[:from], to: params[:to], date: params[:date] })
     malindo.get
 
-    output = airasia.fares + mas.fares + malindo.fares + firefly.fares
-
-    puts Printer.table(output)
+    airasia.fares + mas.fares + malindo.fares + firefly.fares
   end
 end
