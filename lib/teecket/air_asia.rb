@@ -22,6 +22,7 @@ class AirAsia < Flight
           flight_number = rs['segments'][0]['flight-number']
           origin        = rs['segments'][0]['origincode']
           destination   = rs['segments'][0]['destinationcode']
+          transit       = 'NO'
 
           depart_at     = depart_at.strftime('%I:%M %p')
           arrive_at     = arrive_at.strftime('%I:%M %p')
@@ -30,6 +31,7 @@ class AirAsia < Flight
 
           fares << { flight_name: 'AirAsia',
                      flight_number: flight_number,
+                     transit: transit,
                      origin: origin,
                      destination: destination,
                      depart_at: depart_at,

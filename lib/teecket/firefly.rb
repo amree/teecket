@@ -56,6 +56,7 @@ class Firefly < Flight
         flight_number = doc.css('div.market1')[i].css('div.visible-xs').css('table')[0].text.strip
         origin        = doc.css('div.market1')[i]['onclick'].scan(/~[A-Z]{3}~/)[0].gsub('~', '')
         destination   = doc.css('div.market1')[i]['onclick'].scan(/~[A-Z]{3}~/)[1].gsub('~', '')
+        transit       = 'NO'
 
         depart_at     = DateTime.parse("#{date} #{depart_at.gsub(/\t/, '').match(/^(.*?)(AM|PM)/).to_s}").strftime('%I:%M %p')
         arrive_at     = DateTime.parse("#{date} #{arrive_at.gsub(/\t/, '').match(/^(.*?)(AM|PM)/).to_s}").strftime('%I:%M %p')
@@ -64,6 +65,7 @@ class Firefly < Flight
 
         fares << { flight_name: 'Firefly',
                    flight_number: flight_number,
+                   transit: transit,
                    origin: origin,
                    destination: destination,
                    depart_at: depart_at,

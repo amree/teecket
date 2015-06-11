@@ -35,12 +35,20 @@ class MalindoAir < Flight
 
       if result['SearchAirlineFlightsResult']
         result['SearchAirlineFlightsResult'].each do |rs|
+
+          if rs['SegmentInformation'].count > 1
+            transit   = 'YES'
+            arrive_at = rs['SegmentInformation'][rs['SegmentInformation'].count - 1]['ArrivalDate']
+          else
+            transit   = 'NO'
+            arrive_at = rs['ArrivalDate']
+          end
+
           depart_at     = rs['DepartureDate']
-          arrive_at     = rs['ArrivalDate']
           fare          = rs['FlightAmount']
-          flight_number = rs['MACode'] + rs['FlightNo']
           origin        = rs['DepCity']
           destination   = rs['ArrCity']
+          flight_number = rs['SegmentInformation'].map { |arr| arr['MACode'] + arr['FlightNo'] }.join(' + ')
 
           depart_at     = DateTime.strptime(depart_at.gsub(/^\/Date\(|\)\//, ''), '%Q').strftime('%I:%M %p')
           arrive_at     = DateTime.strptime(arrive_at.gsub(/^\/Date\(|\)\//, ''), '%Q').strftime('%I:%M %p')
@@ -48,6 +56,7 @@ class MalindoAir < Flight
 
           fares << { flight_name: 'Malindo Air',
                      flight_number: flight_number,
+                     transit: transit,
                      origin: origin,
                      destination: destination,
                      depart_at: depart_at,
