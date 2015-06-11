@@ -21,24 +21,24 @@ If you're unsure, typing just the `teecket` will yield:
 
 This is an example of an output:
 
-    +-------------------+----------+--------+-------------+----------+----------+-----------+
-    | Flight            | Flight # | Origin | Destination | Depart   | Arrive   | Fare (RM) |
-    +-------------------+----------+--------+-------------+----------+----------+-----------+
-    | AirAsia           | AK6431   | KBR    | KUL         | 08:00 AM | 09:00 AM | 69.00     |
-    | AirAsia           | AK6433   | KBR    | KUL         | 09:25 AM | 10:25 AM | 69.00     |
-    | AirAsia           | AK6435   | KBR    | KUL         | 12:05 PM | 01:10 PM | 69.00     |
-    | AirAsia           | AK6437   | KBR    | KUL         | 02:50 PM | 03:50 PM | 69.00     |
-    | AirAsia           | AK6439   | KBR    | KUL         | 05:25 PM | 06:30 PM | 69.00     |
-    | AirAsia           | AK6441   | KBR    | KUL         | 06:55 PM | 07:55 PM | 69.00     |
-    | AirAsia           | AK6449   | KBR    | KUL         | 08:55 PM | 10:00 PM | 69.00     |
-    | AirAsia           | AK6443   | KBR    | KUL         | 09:55 PM | 10:55 PM | 69.00     |
-    | AirAsia           | AK6447   | KBR    | KUL         | 11:15 PM | 12:15 AM | 39.01     |
-    | Malaysia Airlines | MH1427   | KBR    | KUL         | 06:25 AM | 07:25 AM | 185.50    |
-    | Malaysia Airlines | MH1389   | KBR    | KUL         | 12:30 PM | 01:30 PM | 185.50    |
-    | Malaysia Airlines | MH1397   | KBR    | KUL         | 04:10 PM | 05:10 PM | 185.50    |
-    | Malindo Air       | OD2301   | KBR    | KUL         | 12:15 AM | 01:15 AM | 41.35     |
-    | Malindo Air       | OD2303   | KBR    | KUL         | 09:50 AM | 10:50 AM | 61.35     |
-    +-------------------+----------+--------+-------------+----------+----------+-----------+
+    +-------------------+-----------------+---------+--------+-------------+----------+----------+-----------+
+    | Flight            | Flight #        | Transit | Origin | Destination | Depart   | Arrive   | Fare (RM) |
+    +-------------------+-----------------+---------+--------+-------------+----------+----------+-----------+
+    | Malaysia Airlines | FY5311 + FY5333 | YES     | KBR    | JHB         | 08:00 AM | 11:40 AM |    296.20 |
+    | Malaysia Airlines | MH5427          | NO      | KBR    | JHB         | 08:50 AM | 10:30 AM |    239.55 |
+    | Malaysia Airlines | FY5305 + FY5491 | YES     | KBR    | JHB         | 01:25 PM | 05:10 PM |    296.20 |
+    | Malaysia Airlines | FY5323 + FY5339 | YES     | KBR    | JHB         | 02:50 PM | 06:20 PM |    296.20 |
+    | Malaysia Airlines | FY5325 + FY5341 | YES     | KBR    | JHB         | 03:35 PM | 07:50 PM |    296.20 |
+    | Malaysia Airlines | FY5505 + FY5343 | YES     | KBR    | JHB         | 06:25 PM | 09:30 PM |    296.20 |
+    | Malaysia Airlines | FY5321 + FY5331 | YES     | KBR    | JHB         | 10:20 PM | 08:15 AM |    296.20 |
+    | Malindo Air       | OD1241 + OD1201 | YES     | KBR    | JHB         | 01:25 AM | 09:50 AM |    141.00 |
+    | Malindo Air       | OD1255 + OD1201 | YES     | KBR    | JHB         | 03:10 AM | 09:50 AM |    141.00 |
+    | Malindo Air       | OD1243 + OD1201 | YES     | KBR    | JHB         | 04:25 AM | 09:50 AM |    141.00 |
+    | Malindo Air       | OD1235 + OD1201 | YES     | KBR    | JHB         | 06:05 AM | 09:50 AM |    141.00 |
+    | Malindo Air       | OD1245 + OD1217 | YES     | KBR    | JHB         | 09:15 AM | 01:00 PM |    141.00 |
+    | Malindo Air       | OD1245 + OD1213 | YES     | KBR    | JHB         | 09:15 AM | 02:00 PM |    141.00 |
+    | Firefly           | FY2231          | NO      | KBR    | JHB         | 08:50 AM | 10:30 AM |    200.29 |
+    +-------------------+-----------------+---------+--------+-------------+----------+----------+-----------+
 
 ## Contributing
 
