@@ -13,6 +13,12 @@ class Firefly < Flight
 
     res = http.request(req)
 
+    uri = URI("https://m.fireflyz.com.my/Search")
+
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
     cookie = res["Set-Cookie"]
 
     uri = URI("https://m.fireflyz.com.my/Search")
@@ -21,17 +27,7 @@ class Firefly < Flight
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-    req = Net::HTTP::Get.new(uri.path, initheader = { "Cookie" => cookie })
-
-    cookie = res["Set-Cookie"]
-
-    uri = URI("https://m.fireflyz.com.my/Search")
-
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-    req = Net::HTTP::Post.new(uri.path, initheader = { "Cookie" => cookie })
+    req = Net::HTTP::Post.new(uri.path, "Cookie" => cookie)
     req.body = URI.encode_www_form([
       ["type", 2],
       ["return_date", date],
@@ -51,7 +47,7 @@ class Firefly < Flight
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-      req = Net::HTTP::Get.new(uri.path, initheader = { "Cookie" => cookie })
+      req = Net::HTTP::Get.new(uri.path, "Cookie" => cookie)
 
       res = http.request(req)
 
