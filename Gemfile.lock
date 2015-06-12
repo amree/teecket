@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    teecket (0.0.1)
-      terminal-table (~> 1.4.5)
+    teecket (0.0.6)
+      nokogiri (~> 1.6, >= 1.6.6.2)
+      terminal-table (~> 1.4, >= 1.4.5)
 
 GEM
   remote: https://rubygems.org/
@@ -10,11 +11,17 @@ GEM
     byebug (5.0.0)
       columnize (= 0.9.0)
     columnize (0.9.0)
+    mini_portile (0.6.2)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
     terminal-table (1.4.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  byebug (~> 5.0.0)
+  byebug (~> 5.0, >= 5.0.0)
   teecket!
+
+BUNDLED WITH
+   1.10.2
