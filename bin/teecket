@@ -1,12 +1,12 @@
-#!/usr/bin/env ruby
+# encoding: utf-8
+# !/usr/bin/env ruby
 
-require 'teecket'
-require 'teecket/printer'
+require "teecket"
+require "teecket/printer"
 
 if ARGV.count == 3
-  output = Teecket.search({ from: ARGV[0], to: ARGV[1], date: ARGV[2]})
+  output = Teecket.search(from: ARGV[0], to: ARGV[1], date: ARGV[2])
   puts Printer.table(output)
 else
-  puts 'Example: teecket KBR KUL 30-07-2015'
+  puts "Example: teecket KBR KUL 30-07-2015"
 end
-
