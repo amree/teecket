@@ -4,13 +4,17 @@ class MalaysiaAirlines < Flight
     new_date = DateTime.parse(date)
     new_date = new_date.strftime("%Y-%m-%d")
 
-    uri = URI("https://flymh.mobi/TravelAPI/travelapi/shop/1/mh/#{from}/#{to}/1/0/0/Economy/#{new_date}/")
+    key = "52e6d6d613d3a3e825ac02253fe6b5a4"
+    url = "https://flymh.mobi/TravelAPI/travelapi/shop/1/mh/" <<
+          "#{from}/#{to}/1/0/0/Economy/#{new_date}/"
+
+    uri = URI(url)
 
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-    req = Net::HTTP::Get.new(uri.path, initHeader = { "X-apiKey" => "52e6d6d613d3a3e825ac02253fe6b5a4" })
+    req = Net::HTTP::Get.new(uri.path, "X-apiKey" => key)
 
     res = http.request(req)
     res.body.gsub!(/^fn\(/, "")
@@ -20,20 +24,31 @@ class MalaysiaAirlines < Flight
 
     if result["success"]
       result["outboundOptions"].each do |rs|
+        flights = rs["flights"]
         fare = rs["fareDetails"]["totalTripFare"]
-        origin = rs["flights"][0]["departureAirport"]["code"]
-        depart_at = rs["flights"][0]["depScheduled"]
+        origin = flights[0]["departureAirport"]["code"]
+        depart_at = flights[0]["depScheduled"]
 
-        if rs["flights"].count > 1
+        total_flights = flights.count
+        if flights.count > 1
+          curr_flight = total_flights - 1
+
           transit = "YES"
-          arrive_at = rs["flights"][rs["flights"].count - 1]["arrScheduled"]
-          flight_number = rs["flights"].map { |arr| arr["operatingAirline"] + arr["flightNumber"] }.join(" + ")
-          destination = rs["flights"][rs["flights"].count - 1]["arrivalAirport"]["code"]
+          arrive_at = flights[curr_flight]["arrScheduled"]
+
+          flight_number = flights.map do |arr|
+            arr["operatingAirline"] + arr["flightNumber"]
+          end.join(" + ")
+
+          destination = flights[curr_flight]["arrivalAirport"]["code"]
         else
+          curr_flight = flights[0]
+
           transit = "NO"
-          arrive_at = rs["flights"][0]["arrScheduled"]
-          flight_number = rs["flights"][0]["marketingAirline"] + rs["flights"][0]["flightNumber"]
-          destination = rs["flights"][0]["arrivalAirport"]["code"]
+          arrive_at = curr_flight["arrScheduled"]
+          flight_number =
+            curr_flight["marketingAirline"] + curr_flight["flightNumber"]
+          destination = curr_flight["arrivalAirport"]["code"]
         end
 
         depart_at = DateTime.parse(depart_at).strftime("%I:%M %p")

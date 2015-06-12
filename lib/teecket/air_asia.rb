@@ -8,7 +8,18 @@ class AirAsia < Flight
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
     req = Net::HTTP::Post.new(uri.path)
-    req.body = "type=classic&origin=#{from}&destination=#{to}&depart=#{date}&return=&passenger-count=1&child-count=0&infant-count=0&currency=MYR&days=1"
+    req.body = URI.encode_www_form([
+      ["type", "classic"],
+      ["origin", from],
+      ["destination", to],
+      ["depart", date],
+      ["return", ""],
+      ["passenger-count", 1],
+      ["child-count", 0],
+      ["infant-count", 0],
+      ["currency", "MYR"],
+      ["days", 1]
+    ])
 
     res = http.request(req)
 

@@ -9,18 +9,26 @@ require "teecket/firefly"
 
 class Teecket
   def self.search(params)
-    airasia = AirAsia.new(from: params[:from], to: params[:to], date: params[:date])
-    airasia.get
+    flights = [
+      "AirAsia",
+      "Firefly",
+      "MalaysiaAirlines",
+      "MalindoAir"
+    ]
 
-    firefly = Firefly.new(from: params[:from], to: params[:to], date: params[:date])
-    firefly.get
+    results = []
+    flights.each do |flight|
+      klass = Object.const_get(flight)
 
-    mas = MalaysiaAirlines.new(from: params[:from], to: params[:to], date: params[:date])
-    mas.get
+      scrapper = klass.new(from: params[:from],
+                           to: params[:to],
+                           date: params[:date])
 
-    malindo = MalindoAir.new(from: params[:from], to: params[:to], date: params[:date])
-    malindo.get
+      scrapper.get
 
-    airasia.fares + mas.fares + malindo.fares + firefly.fares
+      results = results + scrapper.fares
+    end
+
+    results
   end
 end

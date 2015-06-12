@@ -5,7 +5,8 @@ Gem::Specification.new do |s|
   s.executables = "teecket"
   s.date = "2015-06-11"
   s.summary = "Search for flights fare in Malaysia"
-  s.description = "Search ticket's fare for all major airlines in Malaysia at once"
+  s.description = %(Search ticket's fare for all
+                    major airlines in Malaysia at once)
   s.authors = ["Amree Zaid"]
   s.email = "mohd.amree@gmail.com"
   s.files = Dir.glob("{bin,lib}/**/*") + %w(README.md)
