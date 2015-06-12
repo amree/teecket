@@ -1,4 +1,3 @@
-# encoding: utf-8
 require "nokogiri"
 
 class Firefly < Flight

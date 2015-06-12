@@ -1,4 +1,3 @@
-# encoding: utf-8
 require "date"
 
 require "teecket/page_requester"
