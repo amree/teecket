@@ -1,5 +1,7 @@
 # encoding: utf-8
 class MalindoAir < Flight
+  include PageRequester
+
   def get
     new_date = DateTime.parse(date)
     new_date = new_date.strftime("%Q")
@@ -9,15 +11,11 @@ class MalindoAir < Flight
 
     uri = URI(url)
 
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
     req = Net::HTTP::Post.new(uri.path, "Content-Type" => "application/json")
     req.body = '{"B2BID":"0","UserLoginId":"0","CustomerUserID":91,' <<
       '"Language":"en-GB","isearchType":"15"}'
 
-    res = http.request(req)
+    res = request(uri, req)
     key = res["wscContext"]
 
     if key
@@ -25,10 +23,6 @@ class MalindoAir < Flight
             "GQDPMobileBookingService.svc/SearchAirlineFlights"
 
       uri = URI(url)
-
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
       req = Net::HTTP::Post.new(uri.path,
                                 "Content-Type" => "application/json",
@@ -48,7 +42,7 @@ class MalindoAir < Flight
 
       req.body = payload
 
-      res = http.request(req)
+      res = request(uri, req)
 
       result = JSON.parse(res.body)
 

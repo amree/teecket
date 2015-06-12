@@ -1,6 +1,7 @@
 # encoding: utf-8
 require "date"
 
+require "teecket/page_requester"
 require "teecket/flight"
 require "teecket/air_asia"
 require "teecket/malaysia_airlines"

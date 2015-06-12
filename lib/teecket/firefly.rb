@@ -2,30 +2,18 @@
 require "nokogiri"
 
 class Firefly < Flight
+  include PageRequester
+
   def get
     uri = URI("https://m.fireflyz.com.my/")
 
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
     req = Net::HTTP::Get.new(uri.path)
 
-    res = http.request(req)
-
-    uri = URI("https://m.fireflyz.com.my/Search")
-
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    res = request(uri, req)
 
     cookie = res["Set-Cookie"]
 
     uri = URI("https://m.fireflyz.com.my/Search")
-
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
     req = Net::HTTP::Post.new(uri.path, "Cookie" => cookie)
     req.body = URI.encode_www_form([
@@ -38,18 +26,14 @@ class Firefly < Flight
       ["departure_date", date]
     ])
 
-    res = http.request(req)
+    res = request(uri, req)
 
     if res["location"]
       uri = URI(res["location"])
 
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
       req = Net::HTTP::Get.new(uri.path, "Cookie" => cookie)
 
-      res = http.request(req)
+      res = request(uri, req)
 
       doc = Nokogiri::HTML(res.body)
 

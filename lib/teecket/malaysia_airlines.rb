@@ -1,5 +1,7 @@
 # encoding: utf-8
 class MalaysiaAirlines < Flight
+  include PageRequester
+
   def get
     new_date = DateTime.parse(date)
     new_date = new_date.strftime("%Y-%m-%d")
@@ -10,13 +12,10 @@ class MalaysiaAirlines < Flight
 
     uri = URI(url)
 
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
     req = Net::HTTP::Get.new(uri.path, "X-apiKey" => key)
 
-    res = http.request(req)
+    res = request(uri, req)
+
     res.body.gsub!(/^fn\(/, "")
     res.body.gsub!(/\)/, "")
 

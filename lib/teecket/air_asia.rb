@@ -1,11 +1,9 @@
 # encoding: utf-8
 class AirAsia < Flight
+  include PageRequester
+
   def get
     uri = URI("https://argon.airasia.com/api/7.0/search")
-
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
     req = Net::HTTP::Post.new(uri.path)
     req.body = URI.encode_www_form([
@@ -21,7 +19,7 @@ class AirAsia < Flight
       ["days", 1]
     ])
 
-    res = http.request(req)
+    res = request(uri, req)
 
     result = JSON.parse(res.body)
 
