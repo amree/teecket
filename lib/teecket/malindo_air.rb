@@ -1,5 +1,6 @@
 class MalindoAir < Flight
   include PageRequester
+  include Selectors::MalindoAir
 
   attr_accessor :res, :new_date
 
@@ -116,41 +117,5 @@ class MalindoAir < Flight
 
   def flights(result)
     result["SearchAirlineFlightsResult"]
-  end
-
-  def depart_at_selector(flight)
-    depart_arrive_at_formatter(flight["DepartureDate"])
-  end
-
-  def arrive_at_selector(flight)
-    depart_arrive_at_formatter(flight)
-  end
-
-  def fare_selector(flight)
-    fare_formatter(flight["FlightAmount"])
-  end
-
-  def flight_number_selector(flight)
-    flight["SegmentInformation"].map do |trip|
-      trip["MACode"] + trip["FlightNo"]
-    end.join(" + ")
-  end
-
-  def origin_selector(flight)
-    flight["DepCity"]
-  end
-
-  def destination_selector(elem)
-    elem["ArrCity"]
-  end
-
-  def depart_arrive_at_formatter(datetime)
-    DateTime
-      .strptime(datetime.gsub(%r(^\/Date\(|\)\/), ""), "%Q")
-      .strftime("%I:%M %p")
-  end
-
-  def fare_formatter(fare)
-    sprintf("%.2f", fare)
   end
 end
