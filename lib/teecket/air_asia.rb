@@ -1,7 +1,18 @@
 class AirAsia < Flight
   include PageRequester
+  include Selectors::AirAsia
+
+  attr_accessor :res
 
   def search
+    get
+    process
+  rescue StandardError
+  end
+
+  private
+
+  def get
     uri = URI("https://argon.airasia.com/api/7.0/search")
 
     req = Net::HTTP::Post.new(uri.path)
@@ -18,37 +29,37 @@ class AirAsia < Flight
       ["days", 1]
     ])
 
-    res = request(uri, req)
+    self.res = request(uri, req)
+  end
 
-    result = JSON.parse(res.body)
+  def process
+    json = JSON.parse(res.body)
 
+    flights(json).each do |flight|
+      depart_at = depart_at_selector(flight)
+      arrive_at = arrive_at_selector(flight)
+      fare = fare_selector(flight)
+      flight_number = flight_number_selector(flight)
+      origin = origin_selector(flight)
+      destination = destination_selector(flight)
+      transit = "NO"
+
+      add_to_fares(flight_name: "AirAsia",
+                   flight_number: flight_number,
+                   transit: transit,
+                   origin: origin,
+                   destination: destination,
+                   depart_at: depart_at,
+                   arrive_at: arrive_at,
+                   fare: fare)
+    end
+  end
+
+  def flights(result)
     if result["session-id"]
-      begin
-        result["depart"][date]["details"]["low-fare"].each do |rs|
-          depart_at = DateTime.parse(rs["segments"][0]["departure-datetime"])
-          arrive_at = DateTime.parse(rs["segments"][0]["arrival-datetime"])
-          fare = rs["total"]["adult"]
-          flight_number = rs["segments"][0]["flight-number"]
-          origin = rs["segments"][0]["origincode"]
-          destination = rs["segments"][0]["destinationcode"]
-          transit = "NO"
-
-          depart_at = depart_at.strftime("%I:%M %p")
-          arrive_at = arrive_at.strftime("%I:%M %p")
-          fare = sprintf("%.2f", fare)
-          flight_number = flight_number.gsub(/ /, "")
-
-          fares << { flight_name: "AirAsia",
-                     flight_number: flight_number,
-                     transit: transit,
-                     origin: origin,
-                     destination: destination,
-                     depart_at: depart_at,
-                     arrive_at: arrive_at,
-                     fare: fare }
-        end
-      rescue StandardError
-      end
+      result["depart"][date]["details"]["low-fare"]
+    else
+      []
     end
   end
 end

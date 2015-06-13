@@ -2,16 +2,35 @@ require "nokogiri"
 
 class Firefly < Flight
   include PageRequester
+  include Selectors::Firefly
+
+  attr_accessor :res, :cookie
+
+  def search
+    get
+    process
+  rescue StandardError
+  end
+
+  private
 
   def get
+    get_main_page
+    get_search_page
+    get_result_page
+  end
+
+  def get_main_page
     uri = URI("https://m.fireflyz.com.my/")
 
     req = Net::HTTP::Get.new(uri.path)
 
-    res = request(uri, req)
+    self.res = request(uri, req)
 
-    cookie = res["Set-Cookie"]
+    self.cookie = res["Set-Cookie"]
+  end
 
+  def get_search_page
     uri = URI("https://m.fireflyz.com.my/Search")
 
     req = Net::HTTP::Post.new(uri.path, "Cookie" => cookie)
@@ -25,75 +44,43 @@ class Firefly < Flight
       ["departure_date", date]
     ])
 
-    res = request(uri, req)
+    self.res = request(uri, req)
+  end
 
+  def get_result_page
     if res["location"]
       uri = URI(res["location"])
 
       req = Net::HTTP::Get.new(uri.path, "Cookie" => cookie)
 
-      res = request(uri, req)
+      self.res = request(uri, req)
+    end
+  end
 
-      doc = Nokogiri::HTML(res.body)
+  def process
+    html = Nokogiri::HTML(res.body)
 
-      doc.css("div.market1").each_with_index do |_elem, i|
-        depart_at = doc.css("div.market1")[i]
-                    .css("div.visible-xs")
-                    .css("table")[1]
-                    .css("td")[0]
-                    .text.strip
+    flights(html).each do |flight|
+      depart_at = depart_at_selector(flight)
+      arrive_at = arrive_at_selector(flight)
+      fare = fare_selector(flight)
+      flight_number = flight_number_selector(flight)
+      origin = origin_selector(flight)
+      destination = destination_selector(flight)
+      transit = "NO"
 
-        arrive_at = doc
-                    .css("div.market1")[i]
-                    .css("div.visible-xs")
-                    .css("table")[1]
-                    .css("td")[1]
-                    .text.strip
-
-        fare = doc
-               .css("div.market1")[i]
-               .css("div.visible-xs > div")
-               .text.strip
-
-        flight_number = doc
-                        .css("div.market1")[i]
-                        .css("div.visible-xs")
-                        .css("table")[0]
-                        .text.strip
-
-        origin = doc
-                 .css("div.market1")[i]["onclick"]
-                 .scan(/~[A-Z]{3}~/)[0]
-                 .gsub("~", "")
-
-        destination = doc
-                      .css("div.market1")[i]["onclick"]
-                      .scan(/~[A-Z]{3}~/)[1]
-                      .gsub("~", "")
-
-        transit = "NO"
-
-        depart_at = DateTime
-                    .parse("#{date} #{depart_at.gsub(/\t/, '')
-                    .match(/^(.*?)(AM|PM)/)}")
-                    .strftime("%I:%M %p")
-
-        arrive_at = DateTime.parse("#{date} #{arrive_at.gsub(/\t/, '')
-                    .match(/^(.*?)(AM|PM)/)}")
-                    .strftime("%I:%M %p")
-
-        fare = fare.gsub(/ MYR/, "")
-        flight_number = flight_number.gsub(/ /, "").gsub(/FLIGHTNO\./, "")
-
-        fares << { flight_name: "Firefly",
+      add_to_fares(flight_name: "Firefly",
                    flight_number: flight_number,
                    transit: transit,
                    origin: origin,
                    destination: destination,
                    depart_at: depart_at,
                    arrive_at: arrive_at,
-                   fare: fare }
-      end
+                   fare: fare)
     end
+  end
+
+  def flights(data)
+    data.css("div.market1")
   end
 end
