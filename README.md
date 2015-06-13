@@ -3,6 +3,9 @@
 Teecket is a gem that will search from AirAsia, Firefly, Malaysia Airlines and
 Malindo Air from the comfort of your command line.
 
+[![Code
+Climate](https://codeclimate.com/github/amree/teecket/badges/gpa.svg)](https://codeclimate.com/github/amree/teecket)
+
 ## Installation
 
 At the command prompt, install it using `gem`:
