@@ -8,6 +8,7 @@ class Firefly < Flight
   def search
     get
     process
+  rescue StandardError
   end
 
   private
