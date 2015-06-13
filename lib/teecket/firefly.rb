@@ -83,7 +83,6 @@ class Firefly < Flight
             .css("div.visible-xs")
             .css("table")[1]
             .css("td")[0]
-            .text.strip
 
     value_formatter("depart_at", value)
   end
@@ -93,7 +92,6 @@ class Firefly < Flight
             .css("div.visible-xs")
             .css("table")[1]
             .css("td")[1]
-            .text.strip
 
     value_formatter("arrive_at", value)
   end
@@ -101,7 +99,6 @@ class Firefly < Flight
   def fare_selector(elem)
     value = elem
             .css("div.visible-xs > div")
-            .text.strip
 
     value_formatter("fare", value)
   end
@@ -110,7 +107,6 @@ class Firefly < Flight
     value = elem
             .css("div.visible-xs")
             .css("table")[0]
-            .text.strip
 
     value_formatter("flight_number", value)
   end
@@ -130,12 +126,12 @@ class Firefly < Flight
   def value_formatter(type, value)
     case type
     when "depart_at", "arrive_at"
-      value.gsub!(/\t/, "").match(/^(.*?)(AM|PM)/)[0]
+      value = value.text.strip.gsub(/\t/, "").match(/^(.*?)(AM|PM)/)[0]
       DateTime.parse("#{date} #{value}").strftime("%I:%M %p")
     when "fare"
-      value.gsub(/ MYR/, "")
+      value.text.strip.gsub(/ MYR/, "")
     when "flight_number"
-      value.gsub(/ /, "").gsub(/FLIGHTNO\./, "")
+      value.text.strip.gsub(/ /, "").gsub(/FLIGHTNO\./, "")
     end
   end
 end
