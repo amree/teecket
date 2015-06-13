@@ -24,7 +24,7 @@ class Teecket
                            to: params[:to],
                            date: params[:date])
 
-      scrapper.get
+      scrapper.search
 
       results = results + scrapper.fares
     end

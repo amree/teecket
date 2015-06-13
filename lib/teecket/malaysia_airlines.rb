@@ -1,7 +1,7 @@
 class MalaysiaAirlines < Flight
   include PageRequester
 
-  def get
+  def search
     new_date = DateTime.parse(date)
     new_date = new_date.strftime("%Y-%m-%d")
 

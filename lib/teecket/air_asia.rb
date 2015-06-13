@@ -1,7 +1,7 @@
 class AirAsia < Flight
   include PageRequester
 
-  def get
+  def search
     uri = URI("https://argon.airasia.com/api/7.0/search")
 
     req = Net::HTTP::Post.new(uri.path)
