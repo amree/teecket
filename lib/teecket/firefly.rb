@@ -59,13 +59,13 @@ class Firefly < Flight
   def process
     html = Nokogiri::HTML(res.body)
 
-    flights_count(html).each do |elem|
-      depart_at = depart_at_selector(elem)
-      arrive_at = arrive_at_selector(elem)
-      fare = fare_selector(elem)
-      flight_number = flight_number_selector(elem)
-      origin = origin_selector(elem)
-      destination = destination_selector(elem)
+    flights(html).each do |flight|
+      depart_at = depart_at_selector(flight)
+      arrive_at = arrive_at_selector(flight)
+      fare = fare_selector(flight)
+      flight_number = flight_number_selector(flight)
+      origin = origin_selector(flight)
+      destination = destination_selector(flight)
       transit = "NO"
 
       add_to_fares(flight_name: "Firefly",
@@ -79,12 +79,12 @@ class Firefly < Flight
     end
   end
 
-  def flights_count(data)
+  def flights(data)
     data.css("div.market1")
   end
 
-  def depart_at_selector(elem)
-    value = elem
+  def depart_at_selector(flight)
+    value = flight
             .css("div.visible-xs")
             .css("table")[1]
             .css("td")[0]
@@ -92,8 +92,8 @@ class Firefly < Flight
     value_formatter("depart_at", value)
   end
 
-  def arrive_at_selector(elem)
-    value = elem
+  def arrive_at_selector(flight)
+    value = flight
             .css("div.visible-xs")
             .css("table")[1]
             .css("td")[1]
@@ -101,29 +101,29 @@ class Firefly < Flight
     value_formatter("arrive_at", value)
   end
 
-  def fare_selector(elem)
-    value = elem
+  def fare_selector(flight)
+    value = flight
             .css("div.visible-xs > div")
 
     value_formatter("fare", value)
   end
 
-  def flight_number_selector(elem)
-    value = elem
+  def flight_number_selector(flight)
+    value = flight
             .css("div.visible-xs")
             .css("table")[0]
 
     value_formatter("flight_number", value)
   end
 
-  def origin_selector(elem)
-    elem["onclick"]
+  def origin_selector(flight)
+    flight["onclick"]
       .scan(/~[A-Z]{3}~/)[0]
       .gsub("~", "")
   end
 
-  def destination_selector(elem)
-    elem["onclick"]
+  def destination_selector(flight)
+    flight["onclick"]
       .scan(/~[A-Z]{3}~/)[1]
       .gsub("~", "")
   end

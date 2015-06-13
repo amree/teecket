@@ -34,13 +34,13 @@ class AirAsia < Flight
   def process
     json = JSON.parse(res.body)
 
-    flights_count(json).each do |elem|
-      depart_at = depart_at_selector(elem)
-      arrive_at = arrive_at_selector(elem)
-      fare = fare_selector(elem)
-      flight_number = flight_number_selector(elem)
-      origin = origin_selector(elem)
-      destination = destination_selector(elem)
+    flights(json).each do |flight|
+      depart_at = depart_at_selector(flight)
+      arrive_at = arrive_at_selector(flight)
+      fare = fare_selector(flight)
+      flight_number = flight_number_selector(flight)
+      origin = origin_selector(flight)
+      destination = destination_selector(flight)
       transit = "NO"
 
       add_to_fares(flight_name: "AirAsia",
@@ -54,7 +54,7 @@ class AirAsia < Flight
     end
   end
 
-  def flights_count(result)
+  def flights(result)
     if result["session-id"]
       result["depart"][date]["details"]["low-fare"]
     else
@@ -62,28 +62,28 @@ class AirAsia < Flight
     end
   end
 
-  def depart_at_selector(elem)
-    depart_arrivate_at_formatter(elem["segments"][0]["departure-datetime"])
+  def depart_at_selector(flight)
+    depart_arrivate_at_formatter(flight["segments"][0]["departure-datetime"])
   end
 
-  def arrive_at_selector(elem)
-    depart_arrivate_at_formatter(elem["segments"][0]["arrival-datetime"])
+  def arrive_at_selector(flight)
+    depart_arrivate_at_formatter(flight["segments"][0]["arrival-datetime"])
   end
 
-  def fare_selector(elem)
-    fare_formatter(elem["total"]["adult"])
+  def fare_selector(flight)
+    fare_formatter(flight["total"]["adult"])
   end
 
-  def flight_number_selector(elem)
-    flight_number_formatter(elem["segments"][0]["flight-number"])
+  def flight_number_selector(flight)
+    flight_number_formatter(flight["segments"][0]["flight-number"])
   end
 
-  def origin_selector(elem)
-    elem["segments"][0]["origincode"]
+  def origin_selector(flight)
+    flight["segments"][0]["origincode"]
   end
 
-  def destination_selector(elem)
-    elem["segments"][0]["destinationcode"]
+  def destination_selector(flight)
+    flight["segments"][0]["destinationcode"]
   end
 
   def depart_arrivate_at_formatter(datetime)

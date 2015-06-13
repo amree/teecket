@@ -28,19 +28,19 @@ class MalaysiaAirlines < Flight
   def process
     json = JSON.parse res.body.gsub(/^fn\(|\)/, "")
 
-    flights_count(json).each do |elem|
-      params = if elem["flights"].count > 1
-                 process_for_transit(elem)
+    flights(json).each do |flight|
+      params = if flight["flights"].count > 1
+                 process_for_transit(flight)
                else
-                 process_for_non_transit(elem)
+                 process_for_non_transit(flight)
                end
 
-      process_for_all(elem, params)
+      process_for_all(flight, params)
     end
   end
 
-  def process_for_transit(elem)
-    trips = elem["flights"]
+  def process_for_transit(flight)
+    trips = flight["flights"]
 
     transit = "YES"
     arrive_at = arrive_at_selector(trips[trips.count - 1])
@@ -53,8 +53,8 @@ class MalaysiaAirlines < Flight
       destination: destination }
   end
 
-  def process_for_non_transit(elem)
-    trips = elem["flights"]
+  def process_for_non_transit(flight)
+    trips = flight["flights"]
 
     transit = "NO"
     arrive_at = arrive_at_selector(trips[0])
@@ -67,10 +67,10 @@ class MalaysiaAirlines < Flight
       destination: destination }
   end
 
-  def process_for_all(elem, params)
-    trips = elem["flights"]
+  def process_for_all(flight, params)
+    trips = flight["flights"]
 
-    fare = fare_selector(elem)
+    fare = fare_selector(flight)
     origin = origin_selector(trips[0])
     depart_at = depart_at_selector(trips[0])
 
@@ -84,41 +84,41 @@ class MalaysiaAirlines < Flight
                  fare: fare)
   end
 
-  def flights_count(result)
+  def flights(result)
     result["outboundOptions"]
   end
 
-  def depart_at_selector(elem)
-    depart_arrive_at_formatter(elem["depScheduled"])
+  def depart_at_selector(flight)
+    depart_arrive_at_formatter(flight["depScheduled"])
   end
 
-  def arrive_at_selector(elem)
-    depart_arrive_at_formatter(elem["arrScheduled"])
+  def arrive_at_selector(flight)
+    depart_arrive_at_formatter(flight["arrScheduled"])
   end
 
-  def fare_selector(elem)
-    fare_formatter(elem["fareDetails"]["totalTripFare"])
+  def fare_selector(flight)
+    fare_formatter(flight["fareDetails"]["totalTripFare"])
   end
 
-  def flight_number_selector(elem, transit)
+  def flight_number_selector(flight, transit)
     if transit
-      elem.map do |arr|
+      flight.map do |arr|
         arr["operatingAirline"] + arr["flightNumber"]
       end.join(" + ")
     else
-      elem["marketingAirline"] + elem["flightNumber"]
+      flight["marketingAirline"] + flight["flightNumber"]
     end
   end
 
-  def origin_selector(elem)
-    elem["departureAirport"]["code"]
+  def origin_selector(flight)
+    flight["departureAirport"]["code"]
   end
 
-  def destination_selector(elem, transit)
+  def destination_selector(flight, transit)
     if transit
-      elem["arrivalAirport"]["code"]
+      flight["arrivalAirport"]["code"]
     else
-      elem["arrivalAirport"]["code"]
+      flight["arrivalAirport"]["code"]
     end
   end
 

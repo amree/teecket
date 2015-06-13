@@ -55,40 +55,40 @@ class MalindoAir < Flight
   def process
     json = JSON.parse(res.body)
 
-    flights_count(json).each do |elem|
-      params = if trips(elem).count > 1
-                 process_for_transit(elem)
+    flights(json).each do |flight|
+      params = if trips(flight).count > 1
+                 process_for_transit(flight)
                else
-                 process_for_non_transit(elem)
+                 process_for_non_transit(flight)
                end
 
-      process_for_all(elem, params)
+      process_for_all(flight, params)
     end
   end
 
-  def trips(elem)
-    elem["SegmentInformation"]
+  def trips(flight)
+    flight["SegmentInformation"]
   end
 
-  def process_for_transit(elem)
-    trips = trips(elem)
+  def process_for_transit(flight)
+    trips = trips(flight)
     arrive_at = arrive_at_selector(trips[trips.size - 1]["ArrivalDate"])
 
     { transit: "YES", arrive_at: arrive_at }
   end
 
-  def process_for_non_transit(elem)
-    arrive_at = arrive_at_selector(elem["ArrivalDate"])
+  def process_for_non_transit(flight)
+    arrive_at = arrive_at_selector(flight["ArrivalDate"])
 
     { transit: "NO", arrive_at: arrive_at }
   end
 
-  def process_for_all(elem, params)
-    depart_at = depart_at_selector(elem)
-    fare = fare_selector(elem)
-    origin = origin_selector(elem)
-    destination = destination_selector(elem)
-    flight_number = flight_number_selector(elem)
+  def process_for_all(flight, params)
+    depart_at = depart_at_selector(flight)
+    fare = fare_selector(flight)
+    origin = origin_selector(flight)
+    destination = destination_selector(flight)
+    flight_number = flight_number_selector(flight)
 
     add_to_fares(flight_name: "Malindo Air",
                  flight_number: flight_number,
@@ -114,30 +114,30 @@ class MalindoAir < Flight
       "\"ReturnDateGap\":0,\"SearchOption\":1},\"fsc\":\"0\"}"
   end
 
-  def flights_count(result)
+  def flights(result)
     result["SearchAirlineFlightsResult"]
   end
 
-  def depart_at_selector(elem)
-    depart_arrive_at_formatter(elem["DepartureDate"])
+  def depart_at_selector(flight)
+    depart_arrive_at_formatter(flight["DepartureDate"])
   end
 
-  def arrive_at_selector(elem)
-    depart_arrive_at_formatter(elem)
+  def arrive_at_selector(flight)
+    depart_arrive_at_formatter(flight)
   end
 
-  def fare_selector(elem)
-    fare_formatter(elem["FlightAmount"])
+  def fare_selector(flight)
+    fare_formatter(flight["FlightAmount"])
   end
 
-  def flight_number_selector(elem)
-    elem["SegmentInformation"].map do |trip|
+  def flight_number_selector(flight)
+    flight["SegmentInformation"].map do |trip|
       trip["MACode"] + trip["FlightNo"]
     end.join(" + ")
   end
 
-  def origin_selector(elem)
-    elem["DepCity"]
+  def origin_selector(flight)
+    flight["DepCity"]
   end
 
   def destination_selector(elem)
