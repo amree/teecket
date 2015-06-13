@@ -56,9 +56,9 @@ class Firefly < Flight
   end
 
   def process
-    doc = Nokogiri::HTML(res.body)
+    html = Nokogiri::HTML(res.body)
 
-    doc.css("div.market1").each do |elem|
+    flights_count(html).each do |elem|
       depart_at = depart_at_selector(elem)
       arrive_at = arrive_at_selector(elem)
       fare = fare_selector(elem)
@@ -76,6 +76,10 @@ class Firefly < Flight
                    arrive_at: arrive_at,
                    fare: fare)
     end
+  end
+
+  def flights_count(data)
+    data.css("div.market1")
   end
 
   def depart_at_selector(elem)
