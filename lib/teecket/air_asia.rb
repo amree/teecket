@@ -1,7 +1,17 @@
 class AirAsia < Flight
   include PageRequester
 
+  attr_accessor :res
+
   def search
+    get
+    process
+  rescue StandardError
+  end
+
+  private
+
+  def get
     uri = URI("https://argon.airasia.com/api/7.0/search")
 
     req = Net::HTTP::Post.new(uri.path)
@@ -18,37 +28,73 @@ class AirAsia < Flight
       ["days", 1]
     ])
 
-    res = request(uri, req)
+    self.res = request(uri, req)
+  end
 
-    result = JSON.parse(res.body)
+  def process
+    json = JSON.parse(res.body)
 
-    if result["session-id"]
-      begin
-        result["depart"][date]["details"]["low-fare"].each do |rs|
-          depart_at = DateTime.parse(rs["segments"][0]["departure-datetime"])
-          arrive_at = DateTime.parse(rs["segments"][0]["arrival-datetime"])
-          fare = rs["total"]["adult"]
-          flight_number = rs["segments"][0]["flight-number"]
-          origin = rs["segments"][0]["origincode"]
-          destination = rs["segments"][0]["destinationcode"]
-          transit = "NO"
+    flights_count(json).each do |elem|
+      depart_at = depart_at_selector(elem)
+      arrive_at = arrive_at_selector(elem)
+      fare = fare_selector(elem)
+      flight_number = flight_number_selector(elem)
+      origin = origin_selector(elem)
+      destination = destination_selector(elem)
+      transit = "NO"
 
-          depart_at = depart_at.strftime("%I:%M %p")
-          arrive_at = arrive_at.strftime("%I:%M %p")
-          fare = sprintf("%.2f", fare)
-          flight_number = flight_number.gsub(/ /, "")
-
-          fares << { flight_name: "AirAsia",
-                     flight_number: flight_number,
-                     transit: transit,
-                     origin: origin,
-                     destination: destination,
-                     depart_at: depart_at,
-                     arrive_at: arrive_at,
-                     fare: fare }
-        end
-      rescue StandardError
-      end
+      add_to_fares(flight_name: "AirAsia",
+                   flight_number: flight_number,
+                   transit: transit,
+                   origin: origin,
+                   destination: destination,
+                   depart_at: depart_at,
+                   arrive_at: arrive_at,
+                   fare: fare)
     end
+  end
+
+  def flights_count(result)
+    if result["session-id"]
+      result["depart"][date]["details"]["low-fare"]
+    else
+      []
+    end
+  end
+
+  def depart_at_selector(elem)
+    depart_arrivate_at_formatter(elem["segments"][0]["departure-datetime"])
+  end
+
+  def arrive_at_selector(elem)
+    depart_arrivate_at_formatter(elem["segments"][0]["arrival-datetime"])
+  end
+
+  def fare_selector(elem)
+    fare_formatter(elem["total"]["adult"])
+  end
+
+  def flight_number_selector(elem)
+    flight_number_formatter(elem["segments"][0]["flight-number"])
+  end
+
+  def origin_selector(elem)
+    elem["segments"][0]["origincode"]
+  end
+
+  def destination_selector(elem)
+    elem["segments"][0]["destinationcode"]
+  end
+
+  def depart_arrivate_at_formatter(datetime)
+    DateTime.parse(datetime).strftime("%I:%M %p")
+  end
+
+  def fare_formatter(fare)
+    sprintf("%.2f", fare)
+  end
+
+  def flight_number_formatter(flight_number)
+    flight_number.gsub(/ /, "")
   end
 end
