@@ -1,6 +1,10 @@
 require "date"
 
 require "teecket/page_requester"
+require "teecket/selectors/air_asia"
+require "teecket/selectors/malaysia_airlines"
+require "teecket/selectors/malindo_air"
+require "teecket/selectors/firefly"
 require "teecket/flight"
 require "teecket/air_asia"
 require "teecket/malaysia_airlines"
