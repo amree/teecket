@@ -3,7 +3,7 @@ require "openssl"
 require "json"
 
 class Flight
-  attr_reader :from, :to, :date, :fares
+  attr_accessor :from, :to, :date, :fares
 
   def initialize(params)
     @from = params[:from]

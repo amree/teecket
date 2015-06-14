@@ -2,7 +2,7 @@ class MalindoAir < Flight
   include PageRequester
   include Selectors::MalindoAir
 
-  attr_accessor :res, :new_date
+  attr_accessor :res
 
   def search
     get
@@ -12,8 +12,9 @@ class MalindoAir < Flight
   private
 
   def prepare
-    self.new_date = DateTime.parse(date)
-    self.new_date = new_date.strftime("%Q")
+    self.date = DateTime.parse(date).strftime("%Q")
+    self.from = from.upcase
+    self.to = to.upcase
   end
 
   def get
@@ -108,7 +109,7 @@ class MalindoAir < Flight
       "\"Children\":0,\"CustomerId\":0,\"CustomerType\":0," <<
       "\"CustomerUserId\":91,\"DepartureCity\":\"#{from}\"," <<
       "\"DepartureCityName\":null," <<
-      "\"DepartureDate\":\"/Date(#{new_date})/\"," <<
+      "\"DepartureDate\":\"/Date(#{date})/\"," <<
       "\"DepartureDateGap\":0,\"DirectFlightsOnly\":false," <<
       "\"Infants\":0,\"IsPackageUpsell\":false,\"JourneyType\":1," <<
       "\"ReturnDate\":\"/Date(-2208988800000)/\"," <<
