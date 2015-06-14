@@ -7,6 +7,7 @@ class MalaysiaAirlines < Flight
   def search
     get
     process
+  rescue StandardError
   end
 
   private
