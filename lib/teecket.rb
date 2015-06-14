@@ -1,4 +1,5 @@
 require "date"
+require "thwait"
 
 require "teecket/page_requester"
 require "teecket/selectors/air_asia"
@@ -21,17 +22,22 @@ class Teecket
     ]
 
     results = []
+    threads = []
     flights.each do |flight|
-      klass = Object.const_get(flight)
+      threads << Thread.new do
+        klass = Object.const_get(flight)
 
-      scrapper = klass.new(from: params[:from],
-                           to: params[:to],
-                           date: params[:date])
+        scrapper = klass.new(from: params[:from],
+                             to: params[:to],
+                             date: params[:date])
 
-      scrapper.search
+        scrapper.search
 
-      results = results + scrapper.fares
+        results = results + scrapper.fares
+      end
     end
+
+    ThreadsWait.all_waits(*threads)
 
     results
   end
