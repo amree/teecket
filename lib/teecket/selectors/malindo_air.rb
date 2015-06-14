@@ -29,6 +29,7 @@ module Selectors
     def depart_arrive_at_formatter(datetime)
       DateTime
         .strptime(datetime.gsub(%r(^\/Date\(|\)\/), ""), "%Q")
+        .to_time
         .strftime("%I:%M %p")
     end
 
