@@ -1,5 +1,4 @@
-# encoding: utf-8
-# !/usr/bin/env ruby
+#!/usr/bin/env ruby
 
 require "teecket"
 require "teecket/printer"
