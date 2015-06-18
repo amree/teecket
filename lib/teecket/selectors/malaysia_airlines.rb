@@ -15,7 +15,8 @@ module Selectors
     def flight_number_selector(flight, transit)
       if transit
         flight.map do |arr|
-          arr["operatingAirline"] + arr["flightNumber"]
+          flight_code = arr["operatingAirline"] || arr["marketingAirline"]
+          flight_code + arr["flightNumber"]
         end.join(" + ")
       else
         flight["marketingAirline"] + flight["flightNumber"]
