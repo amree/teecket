@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "teecket"
-  s.version = "0.0.7"
+  s.version = "0.0.8"
   s.executables = "teecket"
   s.date = "2015-06-17"
   s.summary = "Search for flights fare in Malaysia"
