@@ -45,7 +45,16 @@ This is an example of an output:
 
 ## Contributing
 
+I'm using Rubocop and Hound to ensure some convention/quality for this project.
+You can run it with:
+
+    rubocop -c .ruby-style.yml
+
 It'll help this gem stay alive, so, please do :)
+
+# Live Demo
+
+[Teecket](http://teecket.herokuapp.com)
 
 ## License
 
