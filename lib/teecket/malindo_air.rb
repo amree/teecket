@@ -93,14 +93,16 @@ class MalindoAir < Flight
     destination = destination_selector(flight)
     flight_number = flight_number_selector(flight)
 
-    add_to_fares(flight_name: "Malindo Air",
-                 flight_number: flight_number,
-                 transit: params[:transit],
-                 origin: origin,
-                 destination: destination,
-                 depart_at: depart_at,
-                 arrive_at: params[:arrive_at],
-                 fare: fare)
+    if transit == "NO"
+      add_to_fares(flight_name: "Malindo Air",
+                   flight_number: flight_number,
+                   transit: params[:transit],
+                   origin: origin,
+                   destination: destination,
+                   depart_at: depart_at,
+                   arrive_at: params[:arrive_at],
+                   fare: fare)
+    end
   end
 
   def payload
