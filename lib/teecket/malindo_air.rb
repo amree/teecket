@@ -93,7 +93,7 @@ class MalindoAir < Flight
     destination = destination_selector(flight)
     flight_number = flight_number_selector(flight)
 
-    if transit == "NO"
+    if params[:transit] == "NO"
       add_to_fares(flight_name: "Malindo Air",
                    flight_number: flight_number,
                    transit: params[:transit],
