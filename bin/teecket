@@ -7,5 +7,5 @@ if ARGV.count == 3
   output = Teecket.search(from: ARGV[0], to: ARGV[1], date: ARGV[2])
   puts Printer.table(output)
 else
-  puts "Example: teecket KBR KUL 30-07-2015"
+  puts "Example: teecket KBR KUL 31-12-2015"
 end
