@@ -30,13 +30,20 @@ class Firefly < Flight
     self.cookie = res["Set-Cookie"]
   end
 
+  def split_date(date_object)
+    date_object = Date.strptime(date, "%d-%m-%Y")
+    [
+      date_object.strftime("%d"),
+      date_object.strftime("%m"),
+      date_object.strftime("%Y")
+    ]
+  end
+
+  # rubocop:disable Metrics/AbcSize
   def get_search_page
     uri = URI("http://fireflymobile.me-tech.com.my/fylive3/search.php")
 
-    date_object = Date.strptime(date, "%d-%m-%Y")
-    date_year = date_object.strftime("%Y")
-    date_month = date_object.strftime("%m")
-    date_day = date_object.strftime("%d")
+    day, month, year = split_date(Date.strptime(date, "%d-%m-%Y"))
 
     req = Net::HTTP::Post.new(uri.path, "Cookie" => cookie)
     req.body = URI.encode_www_form([
@@ -44,13 +51,13 @@ class Firefly < Flight
       ["type", 2],
       ["departing", from],
       ["arriving", to],
-      ["d10", date_day],
-      ["d11", date_month],
-      ["d12", date_year],
+      ["d10", day],
+      ["d11", month],
+      ["d12", year],
       ["departuredate", date],
-      ["d20", date_day],
-      ["d21", date_month],
-      ["d22", date_year],
+      ["d20", day],
+      ["d21", month],
+      ["d22", year],
       ["returndate", date],
       ["adult", 1],
       ["infant", 0]
@@ -61,7 +68,8 @@ class Firefly < Flight
 
   def get_result_page
     if res["location"]
-      uri = URI("http://fireflymobile.me-tech.com.my/fylive3/" + res["location"])
+      uri = URI("http://fireflymobile.me-tech.com.my/fylive3/" +
+              res["location"])
 
       req = Net::HTTP::Get.new(uri.path, "Cookie" => cookie)
 
@@ -74,9 +82,7 @@ class Firefly < Flight
 
     origin, destination = origin_destination_selector(html)
 
-    flights(html).each_with_index do |flight, i|
-      next if i == 0
-
+    flights(html).each_with_index(1) do |flight, _|
       depart_at = depart_at_selector(flight)
       arrive_at = arrive_at_selector(flight)
       fare = fare_selector(flight)

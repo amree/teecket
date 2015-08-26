@@ -17,27 +17,26 @@ module Selectors
     end
 
     def fare_selector(flight)
-      value = flight
-              .css("td")[2]
-              .css("div")[1]
-              .text
+      flight
+        .css("td")[2]
+        .css("div")[1]
+        .text
     end
 
     def flight_number_selector(flight)
-      value = flight
-              .css("td")[0]
-              .text
+      flight
+        .css("td")[0]
+        .text
     end
 
     def origin_destination_selector(html)
-      text = html.css('form > div')[1].text
+      text = html.css("form > div")[1].text
       text.scan(/[A-Z]{3}/)
     end
 
-
     def time_formatter(element)
       DateTime.strptime(element.text, "%l:%M%p")
-              .strftime("%I:%M %p")
+        .strftime("%I:%M %p")
     end
   end
 end
