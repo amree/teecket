@@ -4,12 +4,6 @@ class MalaysiaAirlines < Flight
 
   attr_accessor :res
 
-  def search
-    get
-    process
-  rescue StandardError
-  end
-
   private
 
   def get

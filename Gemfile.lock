@@ -1,27 +1,49 @@
 PATH
   remote: .
   specs:
-    teecket (0.0.10)
+    teecket (0.0.11)
       nokogiri (~> 1.6, >= 1.6.6.2)
       terminal-table (~> 1.4, >= 1.4.5)
 
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.3.8)
     byebug (5.0.0)
       columnize (= 0.9.0)
     columnize (0.9.0)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
+    diff-lcs (1.2.5)
     mini_portile (0.6.2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    rspec (3.3.0)
+      rspec-core (~> 3.3.0)
+      rspec-expectations (~> 3.3.0)
+      rspec-mocks (~> 3.3.0)
+    rspec-core (3.3.2)
+      rspec-support (~> 3.3.0)
+    rspec-expectations (3.3.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.3.0)
+    rspec-mocks (3.3.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.3.0)
+    rspec-support (3.3.0)
+    safe_yaml (1.0.4)
     terminal-table (1.5.2)
+    vcr (2.9.3)
+    webmock (1.17.3)
+      addressable (>= 2.2.7)
+      crack (>= 0.3.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   byebug (~> 5.0, >= 5.0.0)
+  rspec (~> 3.3.0, >= 3.3.0)
   teecket!
-
-BUNDLED WITH
-   1.10.5
+  vcr
+  webmock

@@ -9,12 +9,15 @@ class Flight
     @from = params[:from]
     @to = params[:to]
     @date = params[:date]
-
+    @verbose = params[:verbose] || false
     @fares = []
   end
 
   def search
-    raise NotImplementedError
+    get
+    process
+  rescue StandardError => e
+    print_error e
   end
 
   private
@@ -28,5 +31,12 @@ class Flight
                depart_at: params[:depart_at],
                arrive_at: params[:arrive_at],
                fare: params[:fare] }
+  end
+
+  def print_error(error)
+    if @verbose
+      puts "Error: #{error.message}"
+      puts error.backtrace
+    end
   end
 end

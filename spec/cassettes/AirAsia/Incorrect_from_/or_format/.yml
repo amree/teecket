@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://argon.airasia.com/api/7.0/search
+    body:
+      encoding: US-ASCII
+      string: type=classic&origin=Kuala+Lumpur&destination=MEL&depart=19-11-2015&return=&passenger-count=1&child-count=0&infant-count=0&currency=MYR&days=1&promo-code=
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Mozilla/5.0 (Linux; Android 4.4.4; Google Nexus 5 - 4.4.4 - API 19 - 1080x1920
+        Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/33.0.0.0
+        Mobile Safari/537.36
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=UTF-8
+      Origin:
+      - file://
+      X-Requested-With:
+      - XMLHttpRequest
+      Channel:
+      - mobile-touch-app
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Origin:
+      - file://
+      Cache-Control:
+      - no-cache="set-cookie"
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 19 Oct 2015 15:27:21 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Server:
+      - redishot
+      Set-Cookie:
+      - AWSELB=13D5E9E3125CBBEE6CF5670D27DAF2CBEB9677BA3383565578FB3C9F6D0E5DDA0245A0AD3A0935F870A6D761C7BA0822391ACF7B193C695FEDDF403BC885E60FB6621B1E53;PATH=/;MAX-AGE=600
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '63'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"fields":["origin"],"child-count":0}'
+    http_version: 
+  recorded_at: Mon, 19 Oct 2015 15:27:22 GMT
+recorded_with: VCR 2.9.3
