@@ -6,12 +6,6 @@ class Firefly < Flight
 
   attr_accessor :res, :cookie
 
-  def search
-    get
-    process
-  rescue StandardError
-  end
-
   private
 
   def get
@@ -82,7 +76,8 @@ class Firefly < Flight
 
     origin, destination = origin_destination_selector(html)
 
-    flights(html).each_with_index(1) do |flight, _|
+    flights(html).each_with_index do |flight, index|
+      next if index == 0
       depart_at = depart_at_selector(flight)
       arrive_at = arrive_at_selector(flight)
       fare = fare_selector(flight)

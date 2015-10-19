@@ -4,12 +4,6 @@ class MalindoAir < Flight
 
   attr_accessor :res
 
-  def search
-    get
-    process
-  rescue StandardError
-  end
-
   private
 
   def prepare
@@ -51,12 +45,12 @@ class MalindoAir < Flight
                               "WscContext" => key)
 
     req.body = payload
-
     self.res = request(uri, req)
   end
 
   def process
     json = JSON.parse(res.body)
+    return unless flights(json)
 
     flights(json).each do |flight|
       params = if trips(flight).count > 1
@@ -64,7 +58,6 @@ class MalindoAir < Flight
                else
                  process_for_non_transit(flight)
                end
-
       process_for_all(flight, params)
     end
   end

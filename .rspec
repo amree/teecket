@@ -1,0 +1,5 @@
+--color
+--format progress
+--backtrace
+--default-path spec
+--pattern **/*_spec.rb
