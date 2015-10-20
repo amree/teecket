@@ -6,6 +6,11 @@ class AirAsia < Flight
 
   private
 
+  # dd-mm-yyyy
+  def formatted_date
+    "#{date.mday}-#{date.mon}-#{date.year}"
+  end
+
   def get
     uri = URI("https://argon.airasia.com/api/7.0/search")
 
@@ -24,7 +29,7 @@ class AirAsia < Flight
       ["type", "classic"],
       ["origin", from],
       ["destination", to],
-      ["depart", date],
+      ["depart", formatted_date],
       ["return", ""],
       ["passenger-count", 1],
       ["child-count", 0],
@@ -62,7 +67,7 @@ class AirAsia < Flight
 
   def flights(result)
     if result["session-id"]
-      result["depart"][date]["details"]["low-fare"]
+      result["depart"][formatted_date]["details"]["low-fare"]
     else
       []
     end

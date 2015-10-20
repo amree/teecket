@@ -3,6 +3,12 @@ require "openssl"
 require "json"
 
 class Flight
+  class UnsupportedDateFormat < StandardError
+    def message
+      "Unsupported date format, please use yyyy-mm-dd"
+    end
+  end
+
   attr_accessor :from, :to, :date, :fares
 
   def initialize(params)
@@ -14,6 +20,7 @@ class Flight
   end
 
   def search
+    validate_date!
     get
     process
   rescue StandardError => e
@@ -21,6 +28,12 @@ class Flight
   end
 
   private
+
+  def validate_date!
+    @date = Date.parse(@date)
+  rescue ArgumentError
+    raise Flight::UnsupportedDateFormat
+  end
 
   def add_to_fares(params)
     fares << { flight_name: params[:flight_name],

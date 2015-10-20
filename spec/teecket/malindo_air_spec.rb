@@ -4,7 +4,8 @@ describe MalindoAir, vcr: true do
 
   let(:from) { "KUL" }
   let(:to)   { "KCH" }
-  let(:scrapper) { described_class.new(from: from, to: to, date: "2015-11-10") }
+  let(:date) { "2015-11-10" }
+  let(:scrapper) { described_class.new(from: from, to: to, date: date) }
 
   before do
     scrapper.search
@@ -19,4 +20,5 @@ describe MalindoAir, vcr: true do
     it { expect(scrapper.fares).to eql([]) }
   end
 
+  include_examples :date_format
 end

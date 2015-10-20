@@ -7,7 +7,7 @@ class MalindoAir < Flight
   private
 
   def prepare
-    self.date = DateTime.parse(date).strftime("%Q")
+    self.date = date.strftime("%Q")
     self.from = from.upcase
     self.to = to.upcase
   end
@@ -20,13 +20,13 @@ class MalindoAir < Flight
   def get_initialization_page
     prepare
 
-    url = "https://mobileapi.malindoair.com/GQWCF_FlightEngine/" <<
+    url = "https://mobileapi.malindoair.com/GQWCF_FlightEngine/" \
           "GQDPMobileBookingService.svc/InitializeGQService"
 
     uri = URI(url)
 
     req = Net::HTTP::Post.new(uri.path, "Content-Type" => "application/json")
-    req.body = '{"B2BID":"0","UserLoginId":"0","CustomerUserID":91,' <<
+    req.body = '{"B2BID":"0","UserLoginId":"0","CustomerUserID":91,' \
       '"Language":"en-GB","isearchType":"15"}'
 
     self.res = request(uri, req)
@@ -35,7 +35,7 @@ class MalindoAir < Flight
   def get_result_page
     key = res["wscContext"]
 
-    url = "https://mobileapi.malindoair.com/GQWCF_FlightEngine/" <<
+    url = "https://mobileapi.malindoair.com/GQWCF_FlightEngine/" \
           "GQDPMobileBookingService.svc/SearchAirlineFlights"
 
     uri = URI(url)
@@ -99,16 +99,16 @@ class MalindoAir < Flight
   end
 
   def payload
-    "{\"sd\":{\"Adults\":1,\"AirlineCode\":\"\"," <<
-      "\"ArrivalCity\":\"#{to}\",\"ArrivalCityName\":null," <<
-      "\"BookingClass\":null,\"CabinClass\":0,\"ChildAge\":[]," <<
-      "\"Children\":0,\"CustomerId\":0,\"CustomerType\":0," <<
-      "\"CustomerUserId\":91,\"DepartureCity\":\"#{from}\"," <<
-      "\"DepartureCityName\":null," <<
-      "\"DepartureDate\":\"/Date(#{date})/\"," <<
-      "\"DepartureDateGap\":0,\"DirectFlightsOnly\":false," <<
-      "\"Infants\":0,\"IsPackageUpsell\":false,\"JourneyType\":1," <<
-      "\"ReturnDate\":\"/Date(-2208988800000)/\"," <<
+    "{\"sd\":{\"Adults\":1,\"AirlineCode\":\"\"," \
+      "\"ArrivalCity\":\"#{to}\",\"ArrivalCityName\":null," \
+      "\"BookingClass\":null,\"CabinClass\":0,\"ChildAge\":[]," \
+      "\"Children\":0,\"CustomerId\":0,\"CustomerType\":0," \
+      "\"CustomerUserId\":91,\"DepartureCity\":\"#{from}\"," \
+      "\"DepartureCityName\":null," \
+      "\"DepartureDate\":\"/Date(#{date})/\"," \
+      "\"DepartureDateGap\":0,\"DirectFlightsOnly\":false," \
+      "\"Infants\":0,\"IsPackageUpsell\":false,\"JourneyType\":1," \
+      "\"ReturnDate\":\"/Date(-2208988800000)/\"," \
       "\"ReturnDateGap\":0,\"SearchOption\":1},\"fsc\":\"0\"}"
   end
 

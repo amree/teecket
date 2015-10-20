@@ -14,12 +14,7 @@ require "teecket/firefly"
 
 class Teecket
   def self.search(params)
-    flights = [
-      "AirAsia",
-      "Firefly",
-      "MalaysiaAirlines",
-      "MalindoAir"
-    ]
+    flights = %w(AirAsia Firefly MalaysiaAirlines MalindoAir)
 
     results = []
     threads = []

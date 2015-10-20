@@ -4,7 +4,8 @@ describe Firefly, vcr: true do
 
   let(:from) { "SZB" }
   let(:to)   { "AOR" }
-  let(:scrapper) { described_class.new(from: from, to: to, date: "10-11-15") }
+  let(:date) { "15-11-19" }
+  let(:scrapper) { described_class.new(from: from, to: to, date: date) }
 
   before do
     scrapper.search
@@ -19,4 +20,5 @@ describe Firefly, vcr: true do
     it { expect(scrapper.fares).to eql([]) }
   end
 
+  include_examples :date_format
 end
