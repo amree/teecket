@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  - 2.2.2
+notifications:
+  email:
+    recipients:
+      - mohd.amree@gmail.com
+    on_failure: change
+    on_success: never

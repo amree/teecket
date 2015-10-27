@@ -5,6 +5,7 @@ Malindo Air from the comfort of your command line.
 
 [![Code
 Climate](https://codeclimate.com/github/amree/teecket/badges/gpa.svg)](https://codeclimate.com/github/amree/teecket)
+[![Travis CI](https://travis-ci.org/amree/teecket.svg)](https://travis-ci.org/amree/teecket)
 
 ## Installation
 

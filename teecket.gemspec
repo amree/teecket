@@ -14,9 +14,4 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency "terminal-table", "~> 1.4", ">= 1.4.5"
   s.add_runtime_dependency "nokogiri", "~> 1.6", ">= 1.6.6.2"
-
-  s.add_development_dependency "byebug", "~> 5.0", ">= 5.0.0"
-  s.add_development_dependency "rspec", "~> 3.3.0", ">= 3.3.0"
-  s.add_development_dependency "vcr"
-  s.add_development_dependency "webmock"
 end
