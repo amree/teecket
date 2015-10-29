@@ -10,14 +10,6 @@ class AirAsia < Flight
     uri = URI("https://argon.airasia.com/api/7.0/search")
 
     req = Net::HTTP::Post.new(uri.path)
-    req.add_field("Content-Type", "application/x-www-form-urlencoded; "\
-            "charset=UTF-8")
-    req.add_field("User-Agent", "Mozilla/5.0 (Linux; Android 4.4.4; "\
-            "Google Nexus 5 - 4.4.4 - API 19 - 1080x1920 Build/KTU84P) "\
-            "AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 "\
-            "Chrome/33.0.0.0 Mobile Safari/537.36")
-    req.add_field("Origin", "file://")
-    req.add_field("X-Requested-With", "XMLHttpRequest")
     req.add_field("Channel", "mobile-touch-app")
 
     req.body = URI.encode_www_form([
