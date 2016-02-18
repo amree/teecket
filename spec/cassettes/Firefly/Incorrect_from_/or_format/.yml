@@ -19,13 +19,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 19 Oct 2015 09:55:03 GMT
+      - Sun, 01 Nov 2015 19:54:30 GMT
       Server:
       - Apache/2.2.23 (Fedora)
       X-Powered-By:
       - PHP/5.4.17
       Set-Cookie:
-      - PHPSESSID=v76leeie5kgd2jem9f8pu6smp7; path=/
+      - PHPSESSID=vc1envep08a2e7je1jcnks1203; path=/
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
       Cache-Control:
@@ -164,53 +164,52 @@ http_interactions:
         class=\"td1\">\r\n\t\t\t\t<select name=\"arriving\" id=\"arriving\" class=\"select1\">\r\n\t\t\t\t</select>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t\t\t<tr>\r\n\t\t\t<td
         width=\"50%\" class=\"td1\">\r\n\t\t\tDeparture Date*\r\n\t\t\t</td>\r\n\t\t\t<td
         class=\"td1\">\r\n\t\t\t\t<select name=\"d10\" id=\"d10\" onchange=\"setDeparture();\"><option
-        value=\"\"></option><option  value=\"01\">1</option><option  value=\"02\">2</option><option
+        value=\"\"></option><option  value=\"01\">1</option><option selected value=\"02\">2</option><option
         \ value=\"03\">3</option><option  value=\"04\">4</option><option  value=\"05\">5</option><option
         \ value=\"06\">6</option><option  value=\"07\">7</option><option  value=\"08\">8</option><option
         \ value=\"09\">9</option><option  value=\"10\">10</option><option  value=\"11\">11</option><option
         \ value=\"12\">12</option><option  value=\"13\">13</option><option  value=\"14\">14</option><option
         \ value=\"15\">15</option><option  value=\"16\">16</option><option  value=\"17\">17</option><option
-        \ value=\"18\">18</option><option selected value=\"19\">19</option><option
-        \ value=\"20\">20</option><option  value=\"21\">21</option><option  value=\"22\">22</option><option
-        \ value=\"23\">23</option><option  value=\"24\">24</option><option  value=\"25\">25</option><option
-        \ value=\"26\">26</option><option  value=\"27\">27</option><option  value=\"28\">28</option><option
-        \ value=\"29\">29</option><option  value=\"30\">30</option><option  value=\"31\">31</option></select><select
+        \ value=\"18\">18</option><option  value=\"19\">19</option><option  value=\"20\">20</option><option
+        \ value=\"21\">21</option><option  value=\"22\">22</option><option  value=\"23\">23</option><option
+        \ value=\"24\">24</option><option  value=\"25\">25</option><option  value=\"26\">26</option><option
+        \ value=\"27\">27</option><option  value=\"28\">28</option><option  value=\"29\">29</option><option
+        \ value=\"30\">30</option><option  value=\"31\">31</option></select><select
         name=\"d11\" id=\"d11\" onchange=\"setDeparture();\"><option value=\"\"></option><option
         \ value=\"01\">Jan</option><option  value=\"02\">Feb</option><option  value=\"03\">Mar</option><option
         \ value=\"04\">Apr</option><option  value=\"05\">May</option><option  value=\"06\">Jun</option><option
         \ value=\"07\">Jul</option><option  value=\"08\">Aug</option><option  value=\"09\">Sep</option><option
-        selected value=\"10\">Oct</option><option  value=\"11\">Nov</option><option
+        \ value=\"10\">Oct</option><option selected value=\"11\">Nov</option><option
         \ value=\"12\">Dec</option></select><select name=\"d12\" id=\"d12\" onchange=\"setDeparture();\"><option
         value=\"\"></option><option selected value=\"2015\">2015</option><option  value=\"2016\">2016</option></select>\t\t\t\t<!--\r\n\t\t\t\t<select
         name=\"d10\" id=\"d10\" onchange=\"getDepartDay();\"></select>\r\n\t\t\t\t<select
         name=\"d11\" id=\"d11\" onchange=\"getDepartMonthYear();\"></select>-->\r\n\t\t\t\t<input
         style=\"display:none\" type=\"text\" name=\"departuredate\" id=\"departuredate\"
-        value=\"19-10-2015\" class=\"date\"  readonly=\"true\" onclick=\"showDatePicker('datepicker.departuredate')\"/>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr
+        value=\"02-11-2015\" class=\"date\"  readonly=\"true\" onclick=\"showDatePicker('datepicker.departuredate')\"/>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr
         id=\"returndatediv\">\r\n\t\t\t<td width=\"50%\" class=\"td1\">\r\n\t\t\tReturn
         Date*\r\n\t\t\t</td>\r\n\t\t\t<td class=\"td1\">\r\n\t\t\t\t<select name=\"d20\"
         id=\"d20\" onchange=\"setReturn();\"><option value=\"\"></option><option  value=\"01\">1</option><option
         \ value=\"02\">2</option><option  value=\"03\">3</option><option  value=\"04\">4</option><option
         \ value=\"05\">5</option><option  value=\"06\">6</option><option  value=\"07\">7</option><option
-        \ value=\"08\">8</option><option  value=\"09\">9</option><option  value=\"10\">10</option><option
+        \ value=\"08\">8</option><option selected value=\"09\">9</option><option  value=\"10\">10</option><option
         \ value=\"11\">11</option><option  value=\"12\">12</option><option  value=\"13\">13</option><option
         \ value=\"14\">14</option><option  value=\"15\">15</option><option  value=\"16\">16</option><option
         \ value=\"17\">17</option><option  value=\"18\">18</option><option  value=\"19\">19</option><option
         \ value=\"20\">20</option><option  value=\"21\">21</option><option  value=\"22\">22</option><option
         \ value=\"23\">23</option><option  value=\"24\">24</option><option  value=\"25\">25</option><option
-        selected value=\"26\">26</option><option  value=\"27\">27</option><option
-        \ value=\"28\">28</option><option  value=\"29\">29</option><option  value=\"30\">30</option><option
-        \ value=\"31\">31</option></select><select name=\"d21\" id=\"d21\" onchange=\"setReturn();\"><option
-        value=\"\"></option><option  value=\"01\">Jan</option><option  value=\"02\">Feb</option><option
-        \ value=\"03\">Mar</option><option  value=\"04\">Apr</option><option  value=\"05\">May</option><option
-        \ value=\"06\">Jun</option><option  value=\"07\">Jul</option><option  value=\"08\">Aug</option><option
-        \ value=\"09\">Sep</option><option selected value=\"10\">Oct</option><option
-        \ value=\"11\">Nov</option><option  value=\"12\">Dec</option></select><select
-        name=\"d22\" id=\"d22\" onchange=\"setReturn();\"><option value=\"\"></option><option
-        selected value=\"2015\">2015</option><option  value=\"2016\">2016</option></select>\t\t\t\t<!--\r\n\t\t\t\t<select
+        \ value=\"26\">26</option><option  value=\"27\">27</option><option  value=\"28\">28</option><option
+        \ value=\"29\">29</option><option  value=\"30\">30</option><option  value=\"31\">31</option></select><select
+        name=\"d21\" id=\"d21\" onchange=\"setReturn();\"><option value=\"\"></option><option
+        \ value=\"01\">Jan</option><option  value=\"02\">Feb</option><option  value=\"03\">Mar</option><option
+        \ value=\"04\">Apr</option><option  value=\"05\">May</option><option  value=\"06\">Jun</option><option
+        \ value=\"07\">Jul</option><option  value=\"08\">Aug</option><option  value=\"09\">Sep</option><option
+        \ value=\"10\">Oct</option><option selected value=\"11\">Nov</option><option
+        \ value=\"12\">Dec</option></select><select name=\"d22\" id=\"d22\" onchange=\"setReturn();\"><option
+        value=\"\"></option><option selected value=\"2015\">2015</option><option  value=\"2016\">2016</option></select>\t\t\t\t<!--\r\n\t\t\t\t<select
         name=\"d20\" id=\"d20\" onchange=\"getReturnDay(this);\" class=\"select11\"></select>\r\n\t\t\t\t<select
         name=\"d21\" id=\"d21\" onchange=\"getReturnMonthYear();\" class=\"select11\"></select>-->\r\n\t\t\t\t<input
         style=\"display:none\" type=\"text\" name=\"returndate\" id=\"returndate\"
-        value=\"26-10-2015\" class=\"date\"  readonly=\"true\" onclick=\"showDatePicker('datepicker.returndate')\"/>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td
+        value=\"09-11-2015\" class=\"date\"  readonly=\"true\" onclick=\"showDatePicker('datepicker.returndate')\"/>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td
         width=\"50%\" class=\"td1\">\r\n\t\t\tNo of Guests*\r\n\t\t\t</td>\r\n\t\t\t<td
         class=\"td1\">\r\n\t\t\t\t<select name=\"adult\" id=\"adult\" class=\"select1\">\r\n\t\t\t\t<option
         value=\"1\">1</option>\r\n\t\t\t\t<option value=\"2\">2</option>\r\n\t\t\t\t<option
@@ -284,7 +283,7 @@ http_interactions:
         (!isDate(jQuery(\"#departuredate\").val()))\r\n\t{\r\n\t\ta(\"Departure date
         is invalid.\");\r\n\t\treturn false;\r\n\t}\r\n\telse\r\n\t{\r\n\t\tdd = jQuery(\"#departuredate\").val().substring(0,2);\r\n\t\tmm
         = jQuery(\"#departuredate\").val().substring(3,5);\r\n\t\tyyyy = jQuery(\"#departuredate\").val().substring(6,10);\r\n\t\tdeparturedate
-        = (yyyy + mm + dd) * 1;\r\n\t\tif (departuredate < 20151019)\r\n\t\t{\r\n\t\t\ta(\"Departure
+        = (yyyy + mm + dd) * 1;\r\n\t\tif (departuredate < 20151102)\r\n\t\t{\r\n\t\t\ta(\"Departure
         date is invalid.\");\r\n\t\t\treturn false;\r\n\t\t}\r\n\t}\r\n\tif (jQuery(\"#type\").val()
         == 1)\r\n\t{\r\n\t\tif (!isDate(jQuery(\"#returndate\").val()))\r\n\t\t{\r\n\t\t\ta(\"Return
         date is invalid.\");\r\n\t\t\treturn false;\r\n\t\t}\r\n\t\tif (toDateObject(jQuery(\"#returndate\").val())
@@ -405,16 +404,16 @@ http_interactions:
         0) {\r\n\t\t\t\t\t$('#footerishe').show();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\t$(\"select\").addClass(\"select1\");\r\n\t\t\t$(\"input[type='text']\").addClass(\"input1\");
         \ \r\n\t\t\t$(\"input[type='number']\").addClass(\"input1\");\r\n            $(\"input[type='tel']\").addClass(\"input1\");\r\n\t\t\t$(\"input[type='password']\").addClass(\"input1\");\r\n\t\t\t$(\"input[type='submit']\").addClass(\"button1\");\r\n\t\t\t$(\"input[type='button']\").addClass(\"button1\");\r\n\t\t});\r\n\t</script>\r\n\r\n</body>\r\n</html>\r\n"
     http_version: 
-  recorded_at: Mon, 19 Oct 2015 09:55:05 GMT
+  recorded_at: Sun, 01 Nov 2015 19:54:32 GMT
 - request:
     method: post
     uri: http://fireflymobile.me-tech.com.my/fylive3/search.php
     body:
       encoding: US-ASCII
-      string: action=search&type=2&departing=ABC&arriving=AOR&d10=10&d11=11&d12=0015&departuredate=10-11-15&d20=10&d21=11&d22=0015&returndate=10-11-15&adult=1&infant=0
+      string: action=search&type=2&departing=ABC&arriving=AOR&d10=19&d11=11&d12=15&departuredate=19-11-15&d20=19&d21=11&d22=15&returndate=19-11-15&adult=1&infant=0
     headers:
       Cookie:
-      - PHPSESSID=v76leeie5kgd2jem9f8pu6smp7; path=/
+      - PHPSESSID=vc1envep08a2e7je1jcnks1203; path=/
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -427,7 +426,7 @@ http_interactions:
       message: Found
     headers:
       Date:
-      - Mon, 19 Oct 2015 09:55:05 GMT
+      - Sun, 01 Nov 2015 19:54:34 GMT
       Server:
       - Apache/2.2.23 (Fedora)
       X-Powered-By:
@@ -450,7 +449,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 19 Oct 2015 09:55:06 GMT
+  recorded_at: Sun, 01 Nov 2015 19:54:35 GMT
 - request:
     method: get
     uri: http://fireflymobile.me-tech.com.my/fylive3/select.php
@@ -459,7 +458,7 @@ http_interactions:
       string: ''
     headers:
       Cookie:
-      - PHPSESSID=v76leeie5kgd2jem9f8pu6smp7; path=/
+      - PHPSESSID=vc1envep08a2e7je1jcnks1203; path=/
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -472,7 +471,7 @@ http_interactions:
       message: Found
     headers:
       Date:
-      - Mon, 19 Oct 2015 09:55:06 GMT
+      - Sun, 01 Nov 2015 19:54:36 GMT
       Server:
       - Apache/2.2.23 (Fedora)
       X-Powered-By:
@@ -495,5 +494,5 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 19 Oct 2015 09:55:09 GMT
+  recorded_at: Sun, 01 Nov 2015 19:54:39 GMT
 recorded_with: VCR 2.9.3

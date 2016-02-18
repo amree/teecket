@@ -8,6 +8,10 @@ class Firefly < Flight
 
   private
 
+  def formatted_date
+    "#{date.mday}-#{date.mon}-#{date.strftime("%y")}"
+  end
+
   def get
     get_main_page
     get_search_page
@@ -24,20 +28,13 @@ class Firefly < Flight
     self.cookie = res["Set-Cookie"]
   end
 
-  def split_date(date_object)
-    date_object = Date.strptime(date, "%d-%m-%Y")
-    [
-      date_object.strftime("%d"),
-      date_object.strftime("%m"),
-      date_object.strftime("%Y")
-    ]
-  end
-
   # rubocop:disable Metrics/AbcSize
   def get_search_page
     uri = URI("http://fireflymobile.me-tech.com.my/fylive3/search.php")
 
-    day, month, year = split_date(Date.strptime(date, "%d-%m-%Y"))
+    day   = date.mday
+    month = date.mon
+    year  = date.strftime("%y")
 
     req = Net::HTTP::Post.new(uri.path, "Cookie" => cookie)
     req.body = URI.encode_www_form([
@@ -48,11 +45,11 @@ class Firefly < Flight
       ["d10", day],
       ["d11", month],
       ["d12", year],
-      ["departuredate", date],
+      ["departuredate", formatted_date],
       ["d20", day],
       ["d21", month],
       ["d22", year],
-      ["returndate", date],
+      ["returndate", formatted_date],
       ["adult", 1],
       ["infant", 0]
     ])

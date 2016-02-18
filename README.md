@@ -44,6 +44,15 @@ This is an example of an output:
     | Firefly           | FY2231          | NO      | KBR    | JHB         | 08:50 AM | 10:30 AM |    200.29 |
     +-------------------+-----------------+---------+--------+-------------+----------+----------+-----------+
 
+## Parameters
+
+| Params    | Type   | Required? | Remarks                    |
+|-----------|--------|-----------|----------------------------|
+| from      | String | yes       | Airport code, e.g: KUL     |
+| to        | String | yes       | Airport code, e.g: KUL     |
+| date      | String | yes       | dd-mm-yyyy, yy-mm-dd, yyyy-mm-dd, dd/mm/yyyy, etc |
+| verbose   | String | no        | verbosity                  |
+
 ## Contributing
 
 I'm using Rubocop and Hound to ensure some convention/quality for this project.

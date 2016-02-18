@@ -1,0 +1,90 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://argon.airasia.com/api/7.0/search
+    body:
+      encoding: US-ASCII
+      string: type=classic&origin=KUL&destination=MEL&depart=10-11-2015&return=&passenger-count=1&child-count=0&infant-count=0&currency=MYR&days=1&promo-code=
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Mozilla/5.0 (Linux; Android 4.4.4; Google Nexus 5 - 4.4.4 - API 19 - 1080x1920
+        Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/33.0.0.0
+        Mobile Safari/537.36
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=UTF-8
+      Origin:
+      - file://
+      X-Requested-With:
+      - XMLHttpRequest
+      Channel:
+      - mobile-touch-app
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Origin:
+      - file://
+      Cache-Control:
+      - no-cache="set-cookie"
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 01 Nov 2015 19:54:14 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Server:
+      - redishot
+      Set-Cookie:
+      - AWSELB=13D5E9E3125CBBEE6CF5670D27DAF2CBEB9677BA3383565578FB3C9F6D0E5DDA0245A0AD3A0935F870A6D761C7BA0822391ACF7B193BCADAC4A30C914C2E1ED1AE7A49972F;PATH=/;MAX-AGE=600
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '751'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"depart":{"10-11-2015":{"currency":"MYR","lowest-price":499,"details":{"low-fare":[{"currency":"MYR","flight-number":"D7  212","actual-fare-price":{"adult":396.08,"child":null},"discount-percentage":null,"fare-price":{"adult":396.08,"child":null},"taxes-and-fees":{"adult":102.92,"child":null},"total":{"adult":499,"child":null},"time":"13:20PM
+        - 00:10AM","journey-sellkey":"EP~D7~ 212~ ~~KUL~11\/10\/2015 13:20~MEL~11\/11\/2015
+        00:10~","fare-signage":"","journey-type":"flight","number-of-stops":0,"segments":[{"flight-number":"D7  212","segment-type":"flight","origin":"Kuala
+        Lumpur","origincode":"KUL","destination":"Melbourne","destinationcode":"MEL","departure-datetime":"Tue,
+        10 Nov 2015 13:20:00 +0800","std":"2015-11-10T13:20:00","arrival-datetime":"Wed,
+        11 Nov 2015 00:10:00 +1000","sta":"2015-11-11T00:10:00","transfer-info":null}]},{"currency":"MYR","flight-number":"D7  214","actual-fare-price":{"adult":526.08,"child":null},"discount-percentage":null,"fare-price":{"adult":526.08,"child":null},"taxes-and-fees":{"adult":102.92,"child":null},"total":{"adult":629,"child":null},"time":"22:30PM
+        - 09:20AM","journey-sellkey":"EP~D7~ 214~ ~~KUL~11\/10\/2015 22:30~MEL~11\/11\/2015
+        09:20~","fare-signage":"","journey-type":"flight","number-of-stops":0,"segments":[{"flight-number":"D7  214","segment-type":"flight","origin":"Kuala
+        Lumpur","origincode":"KUL","destination":"Melbourne","destinationcode":"MEL","departure-datetime":"Tue,
+        10 Nov 2015 22:30:00 +0800","std":"2015-11-10T22:30:00","arrival-datetime":"Wed,
+        11 Nov 2015 09:20:00 +1000","sta":"2015-11-11T09:20:00","transfer-info":null}]}],"hi-flyer":[{"currency":"MYR","flight-number":"D7  212","actual-fare-price":{"adult":646.08,"child":null},"discount-percentage":null,"fare-price":{"adult":646.08,"child":null},"taxes-and-fees":{"adult":102.92,"child":null},"total":{"adult":749,"child":null},"time":"13:20PM
+        - 00:10AM","journey-sellkey":"HF~D7~ 212~ ~~KUL~11\/10\/2015 13:20~MEL~11\/11\/2015
+        00:10~","fare-signage":"","journey-type":"flight","number-of-stops":0,"segments":[{"flight-number":"D7  212","segment-type":"flight","origin":"Kuala
+        Lumpur","origincode":"KUL","destination":"Melbourne","destinationcode":"MEL","departure-datetime":"Tue,
+        10 Nov 2015 13:20:00 +0800","std":"2015-11-10T13:20:00","arrival-datetime":"Wed,
+        11 Nov 2015 00:10:00 +1000","sta":"2015-11-11T00:10:00","transfer-info":null}]},{"currency":"MYR","flight-number":"D7  214","actual-fare-price":{"adult":776.08,"child":null},"discount-percentage":null,"fare-price":{"adult":776.08,"child":null},"taxes-and-fees":{"adult":102.92,"child":null},"total":{"adult":879,"child":null},"time":"22:30PM
+        - 09:20AM","journey-sellkey":"HF~D7~ 214~ ~~KUL~11\/10\/2015 22:30~MEL~11\/11\/2015
+        09:20~","fare-signage":"","journey-type":"flight","number-of-stops":0,"segments":[{"flight-number":"D7  214","segment-type":"flight","origin":"Kuala
+        Lumpur","origincode":"KUL","destination":"Melbourne","destinationcode":"MEL","departure-datetime":"Tue,
+        10 Nov 2015 22:30:00 +0800","std":"2015-11-10T22:30:00","arrival-datetime":"Wed,
+        11 Nov 2015 09:20:00 +1000","sta":"2015-11-11T09:20:00","transfer-info":null}]}],"premium":[{"currency":"MYR","flight-number":"D7  212","actual-fare-price":{"adult":1696.08,"child":null},"discount-percentage":null,"fare-price":{"adult":1696.08,"child":null},"taxes-and-fees":{"adult":102.92,"child":null},"total":{"adult":1799,"child":null},"time":"13:20PM
+        - 00:10AM","journey-sellkey":"PM~D7~ 212~ ~~KUL~11\/10\/2015 13:20~MEL~11\/11\/2015
+        00:10~","fare-signage":"","journey-type":"flight","number-of-stops":0,"segments":[{"flight-number":"D7  212","segment-type":"flight","origin":"Kuala
+        Lumpur","origincode":"KUL","destination":"Melbourne","destinationcode":"MEL","departure-datetime":"Tue,
+        10 Nov 2015 13:20:00 +0800","std":"2015-11-10T13:20:00","arrival-datetime":"Wed,
+        11 Nov 2015 00:10:00 +1000","sta":"2015-11-11T00:10:00","transfer-info":null}]},{"currency":"MYR","flight-number":"D7  214","actual-fare-price":{"adult":2196.08,"child":null},"discount-percentage":null,"fare-price":{"adult":2196.08,"child":null},"taxes-and-fees":{"adult":102.92,"child":null},"total":{"adult":2299,"child":null},"time":"22:30PM
+        - 09:20AM","journey-sellkey":"PM~D7~ 214~ ~~KUL~11\/10\/2015 22:30~MEL~11\/11\/2015
+        09:20~","fare-signage":"","journey-type":"flight","number-of-stops":0,"segments":[{"flight-number":"D7  214","segment-type":"flight","origin":"Kuala
+        Lumpur","origincode":"KUL","destination":"Melbourne","destinationcode":"MEL","departure-datetime":"Tue,
+        10 Nov 2015 22:30:00 +0800","std":"2015-11-10T22:30:00","arrival-datetime":"Wed,
+        11 Nov 2015 09:20:00 +1000","sta":"2015-11-11T09:20:00","transfer-info":null}]}]}}},"return":{"30-11-1999":{"currency":"MYR","lowest-price":null,"details":[]}},"timeout":480,"mcc":false,"company-gst-eligibility":["AK","D7"],"session-id":"dvhrea9lnr2v0bva4v1ja74stoq3k5th"}'
+    http_version: 
+  recorded_at: Sun, 01 Nov 2015 19:54:14 GMT
+recorded_with: VCR 2.9.3

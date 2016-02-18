@@ -6,13 +6,15 @@ class MalaysiaAirlines < Flight
 
   private
 
-  def get
-    new_date = DateTime.parse(date)
-    new_date = new_date.strftime("%Y-%m-%d")
+  # yyyy-mm-dd
+  def formatted_date
+    "#{date.year}-#{date.mon}-#{date.mday}"
+  end
 
+  def get
     key = "52e6d6d613d3a3e825ac02253fe6b5a4"
-    url = "https://flymh.mobi/TravelAPI/travelapi/shop/1/mh/" <<
-          "#{from}/#{to}/1/0/0/Economy/#{new_date}/"
+    url = "https://flymh.mobi/TravelAPI/travelapi/shop/1/mh/" \
+          "#{from}/#{to}/1/0/0/Economy/#{formatted_date}/"
 
     uri = URI(url)
 
