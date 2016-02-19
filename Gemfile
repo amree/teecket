@@ -9,3 +9,4 @@ group :development, :test do
   gem "vcr"
   gem "webmock"
 end
+gem "nokogiri", ">= 1.6.7.2"
