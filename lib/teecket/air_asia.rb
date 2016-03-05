@@ -6,11 +6,6 @@ class AirAsia < Flight
 
   private
 
-  # dd-mm-yyyy
-  def formatted_date
-    "#{date.mday}-#{date.mon}-#{date.year}"
-  end
-
   def get
     url = "https://booking.airasia.com/Flight/Select?#{parameters}"
     uri = URI(url)
@@ -56,5 +51,9 @@ class AirAsia < Flight
       "CHD=0",
       "inl=0"
     ].join("&")
+  end
+
+  def formatted_date
+    "#{date.mday}-#{date.strftime('%m')}-#{date.strftime('%y')}"
   end
 end

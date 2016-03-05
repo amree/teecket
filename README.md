@@ -50,7 +50,7 @@ This is an example of an output:
 |-----------|--------|-----------|----------------------------|
 | from      | String | yes       | Airport code, e.g: KUL     |
 | to        | String | yes       | Airport code, e.g: KUL     |
-| date      | String | yes       | dd-mm-yyyy, yy-mm-dd, yyyy-mm-dd, dd/mm/yyyy, etc |
+| date      | String | yes       | dd-mm-yyyy, yyyy-mm-dd, dd/mm/yyyy, etc |
 | verbose   | String | no        | verbosity                  |
 
 ## Development

@@ -20,7 +20,7 @@ class Flight
   end
 
   def search
-    validate_date!
+    format_date
     get
     process
   rescue StandardError => e
@@ -29,7 +29,7 @@ class Flight
 
   private
 
-  def validate_date!
+  def format_date
     @date = Date.parse(@date)
   rescue ArgumentError
     raise Flight::UnsupportedDateFormat

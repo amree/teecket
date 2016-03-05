@@ -1,5 +1,4 @@
 require "date"
-require "thwait"
 
 require "teecket/page_requester"
 require "teecket/selectors/air_asia"

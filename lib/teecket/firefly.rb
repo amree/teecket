@@ -8,10 +8,6 @@ class Firefly < Flight
 
   private
 
-  def formatted_date
-    "#{date.mday}-#{date.strftime('%m')}-#{date.strftime('%y')}"
-  end
-
   def get
     get_cookie
     do_search
@@ -99,5 +95,9 @@ class Firefly < Flight
 
   def flights(data)
     data.css("form table:last tr")
+  end
+
+  def formatted_date
+    "#{date.mday}-#{date.strftime('%m')}-#{date.strftime('%y')}"
   end
 end
