@@ -3,7 +3,7 @@ source "https://rubygems.org"
 gemspec
 
 group :development, :test do
-  gem "byebug"
+  gem "pry"
   gem "rake"
   gem "rspec"
   gem "vcr"
