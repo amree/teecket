@@ -1,39 +1,33 @@
 module Selectors
   module AirAsia
-    def depart_at_selector(flight)
-      depart_arrivate_at_formatter(flight["segments"][0]["departure-datetime"])
+    def flights(html)
+      html.css("table.avail-table tr[class^=fare]")
     end
 
-    def arrive_at_selector(flight)
-      depart_arrivate_at_formatter(flight["segments"][0]["arrival-datetime"])
+    def origin_destination_selector(html)
+      html.css("div.price-display-header-stations").text.scan(/[A-Z]{3}/)
     end
 
-    def fare_selector(flight)
-      fare_formatter(flight["total"]["adult"])
+    def depart_at_selector(html)
+      datetime_formatter(
+        html.css("td:first td")[1].text.gsub(" ", "").strip[0..4])
     end
 
-    def flight_number_selector(flight)
-      flight_number_formatter(flight["segments"][0]["flight-number"])
+    def arrive_at_selector(html)
+      datetime_formatter(
+        html.css("td:first td")[3].text.gsub(" ", "").strip[0..4])
     end
 
-    def origin_selector(flight)
-      flight["segments"][0]["origincode"]
+    def fare_selector(html)
+      html.css("td:last div.avail-fare-price").text.strip.split(" ").first
     end
 
-    def destination_selector(flight)
-      flight["segments"][0]["destinationcode"]
+    def flight_number_selector(html)
+      html.css("td:first div.carrier-hover-bold").first.text.gsub(" ", "")
     end
 
-    def depart_arrivate_at_formatter(datetime)
+    def datetime_formatter(datetime)
       DateTime.parse(datetime).strftime("%I:%M %p")
-    end
-
-    def fare_formatter(fare)
-      sprintf("%.2f", fare)
-    end
-
-    def flight_number_formatter(flight_number)
-      flight_number.gsub(/ /, "")
     end
   end
 end

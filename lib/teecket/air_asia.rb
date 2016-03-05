@@ -12,38 +12,28 @@ class AirAsia < Flight
   end
 
   def get
-    uri = URI("https://argon.airasia.com/api/7.0/search")
+    url = "https://booking.airasia.com/Flight/Select?#{parameters}"
+    uri = URI(url)
 
-    req = Net::HTTP::Post.new(uri.path)
-    req.add_field("Channel", "mobile-touch-app")
-
-    req.body = URI.encode_www_form([
-      ["type", "classic"],
-      ["origin", from],
-      ["destination", to],
-      ["depart", formatted_date],
-      ["return", ""],
-      ["passenger-count", 1],
-      ["child-count", 0],
-      ["infant-count", 0],
-      ["currency", "MYR"],
-      ["days", 1],
-      ["promo-code", ""]
-    ])
+    req = Net::HTTP::Get.new(uri)
 
     self.res = request(uri, req)
   end
 
   def process
-    json = JSON.parse(res.body)
+    html = Nokogiri::HTML(res.body)
 
-    flights(json).each do |flight|
+    origin, destination = origin_destination_selector(html)
+
+    flights(html).each_with_index do |flight, index|
+      if index % 2 > 0
+        next
+      end
+
       depart_at = depart_at_selector(flight)
       arrive_at = arrive_at_selector(flight)
       fare = fare_selector(flight)
       flight_number = flight_number_selector(flight)
-      origin = origin_selector(flight)
-      destination = destination_selector(flight)
       transit = "NO"
 
       add_to_fares(flight_name: "AirAsia",
@@ -57,11 +47,14 @@ class AirAsia < Flight
     end
   end
 
-  def flights(result)
-    if result["session-id"]
-      result["depart"][formatted_date]["details"]["low-fare"]
-    else
-      []
-    end
+  def parameters
+    [
+      "o1=#{from}",
+      "d1=#{to}",
+      "dd1=#{date}",
+      "ADT=1",
+      "CHD=0",
+      "inl=0"
+    ].join("&")
   end
 end
