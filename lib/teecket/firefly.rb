@@ -9,30 +9,30 @@ class Firefly < Flight
   private
 
   def formatted_date
-    "#{date.mday}-#{date.mon}-#{date.strftime('%y')}"
+    "#{date.mday}-#{date.strftime('%m')}-#{date.strftime('%y')}"
   end
 
   def get
-    get_main_page
-    get_search_page
+    get_cookie
+    do_search
     get_result_page
   end
 
-  def get_main_page
+  def get_cookie
     uri = URI("http://fireflymobile.me-tech.com.my/fylive3/search.php")
 
     req = Net::HTTP::Get.new(uri.path)
 
     self.res = request(uri, req, false)
 
-    self.cookie = res["Set-Cookie"]
+    self.cookie = res["Set-Cookie"].split(";")[0]
   end
 
-  def get_search_page
+  def do_search
     uri = URI("http://fireflymobile.me-tech.com.my/fylive3/search.php")
 
     day   = date.mday
-    month = date.mon
+    month = date.strftime("%m")
     year  = date.strftime("%y")
 
     req = Net::HTTP::Post.new(uri.path, "Cookie" => cookie)
@@ -59,7 +59,7 @@ class Firefly < Flight
   end
 
   def get_result_page
-    if res["location"]
+    if res.code == "302"
       uri = URI("http://fireflymobile.me-tech.com.my/fylive3/" +
               res["location"])
 
