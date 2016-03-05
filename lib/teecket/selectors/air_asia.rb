@@ -10,12 +10,12 @@ module Selectors
 
     def depart_at_selector(html)
       datetime_formatter(
-        html.css("td:first td")[1].text.gsub(" ", "").strip[0..4])
+        html.css("td:first td")[1].text.delete(" ").strip[0..4])
     end
 
     def arrive_at_selector(html)
       datetime_formatter(
-        html.css("td:first td")[3].text.gsub(" ", "").strip[0..4])
+        html.css("td:first td")[3].text.delete(" ").strip[0..4])
     end
 
     def fare_selector(html)
@@ -23,7 +23,7 @@ module Selectors
     end
 
     def flight_number_selector(html)
-      html.css("td:first div.carrier-hover-bold").first.text.gsub(" ", "")
+      html.css("td:first div.carrier-hover-bold").first.text.delete(" ")
     end
 
     def datetime_formatter(datetime)

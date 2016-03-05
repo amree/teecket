@@ -1,7 +1,6 @@
 require "spec_helper"
 
 describe Firefly, vcr: true do
-
   let(:from) { "SZB" }
   let(:to)   { "AOR" }
   let(:date) { "15-11-19" }

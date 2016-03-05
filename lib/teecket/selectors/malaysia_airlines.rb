@@ -27,12 +27,8 @@ module Selectors
       flight["departureAirport"]["code"]
     end
 
-    def destination_selector(flight, transit)
-      if transit
-        flight["arrivalAirport"]["code"]
-      else
-        flight["arrivalAirport"]["code"]
-      end
+    def destination_selector(flight)
+      flight["arrivalAirport"]["code"]
     end
 
     def depart_arrive_at_formatter(datetime)
@@ -40,7 +36,7 @@ module Selectors
     end
 
     def fare_formatter(fare)
-      sprintf("%.2f", fare)
+      format("%.2f", fare)
     end
   end
 end

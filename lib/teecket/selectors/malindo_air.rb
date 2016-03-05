@@ -27,14 +27,14 @@ module Selectors
     end
 
     def depart_arrive_at_formatter(datetime)
-      DateTime
-        .strptime(datetime.gsub(%r{^\/Date\(|\)\/}, ""), "%Q")
-        .to_time
-        .strftime("%I:%M %p")
+      DateTime.
+        strptime(datetime.gsub(%r{^\/Date\(|\)\/}, ""), "%Q").
+        to_time.
+        strftime("%I:%M %p")
     end
 
     def fare_formatter(fare)
-      sprintf("%.2f", fare)
+      format("%.2f", fare)
     end
   end
 end

@@ -1,7 +1,6 @@
 require "spec_helper"
 
 describe AirAsia, vcr: true do
-
   let(:from) { "KUL" }
   let(:to)   { "MEL" }
   let(:date) { "2015-11-19" }

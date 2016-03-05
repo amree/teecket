@@ -9,7 +9,7 @@ class Firefly < Flight
   private
 
   def formatted_date
-    "#{date.mday}-#{date.mon}-#{date.strftime("%y")}"
+    "#{date.mday}-#{date.mon}-#{date.strftime('%y')}"
   end
 
   def get
@@ -28,7 +28,6 @@ class Firefly < Flight
     self.cookie = res["Set-Cookie"]
   end
 
-  # rubocop:disable Metrics/AbcSize
   def get_search_page
     uri = URI("http://fireflymobile.me-tech.com.my/fylive3/search.php")
 
@@ -37,22 +36,24 @@ class Firefly < Flight
     year  = date.strftime("%y")
 
     req = Net::HTTP::Post.new(uri.path, "Cookie" => cookie)
-    req.body = URI.encode_www_form([
-      ["action", "search"],
-      ["type", 2],
-      ["departing", from],
-      ["arriving", to],
-      ["d10", day],
-      ["d11", month],
-      ["d12", year],
-      ["departuredate", formatted_date],
-      ["d20", day],
-      ["d21", month],
-      ["d22", year],
-      ["returndate", formatted_date],
-      ["adult", 1],
-      ["infant", 0]
-    ])
+    req.body = URI.encode_www_form(
+      [
+        ["action", "search"],
+        ["type", 2],
+        ["departing", from],
+        ["arriving", to],
+        ["d10", day],
+        ["d11", month],
+        ["d12", year],
+        ["departuredate", formatted_date],
+        ["d20", day],
+        ["d21", month],
+        ["d22", year],
+        ["returndate", formatted_date],
+        ["adult", 1],
+        ["infant", 0]
+      ]
+    )
 
     self.res = request(uri, req, false)
   end
@@ -70,6 +71,10 @@ class Firefly < Flight
 
   def process
     html = Nokogiri::HTML(res.body)
+
+    if html.children.count <= 1
+      return
+    end
 
     origin, destination = origin_destination_selector(html)
 

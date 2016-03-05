@@ -26,7 +26,7 @@ class Teecket
 
       scrapper.search
 
-      results = results + scrapper.fares
+      results += scrapper.fares
     end
 
     results

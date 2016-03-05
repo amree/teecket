@@ -47,7 +47,8 @@ class Flight
   end
 
   def print_error(error)
-    if @verbose
+    # if @verbose
+    if true
       puts "Error: #{error.message}"
       puts error.backtrace
     end

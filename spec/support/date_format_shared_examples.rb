@@ -1,5 +1,4 @@
 shared_examples :date_format do
-
   describe "Date format" do
     context "yy-mm-dd" do
       let(:date) { "15-11-10" }
@@ -21,5 +20,4 @@ shared_examples :date_format do
       it { expect(scrapper.fares.count).to be > 0 }
     end
   end
-
 end

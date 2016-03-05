@@ -43,7 +43,7 @@ class MalaysiaAirlines < Flight
     transit = "YES"
     arrive_at = arrive_at_selector(trips[trips.count - 1])
     flight_number = flight_number_selector(trips, true)
-    destination = destination_selector(trips[trips.count - 1], true)
+    destination = destination_selector(trips[trips.count - 1])
 
     { transit: transit,
       arrive_at: arrive_at,
@@ -57,7 +57,7 @@ class MalaysiaAirlines < Flight
     transit = "NO"
     arrive_at = arrive_at_selector(trips[0])
     flight_number = flight_number_selector(trips[0], false)
-    destination = destination_selector(trips[0], false)
+    destination = destination_selector(trips[0])
 
     { transit: transit,
       arrive_at: arrive_at,
