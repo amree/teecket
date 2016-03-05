@@ -3,7 +3,7 @@ require "spec_helper"
 describe MalindoAir, vcr: true do
   let(:from) { "KUL" }
   let(:to)   { "KCH" }
-  let(:date) { "2015-11-10" }
+  let(:date) { "2016-08-10" }
   let(:scrapper) { described_class.new(from: from, to: to, date: date) }
 
   before do

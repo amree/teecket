@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://flymh.mobi/TravelAPI/travelapi/shop/1/mh/Kuala_Lumpur/KCH/1/0/0/Economy/2016-08-09/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Apikey:
+      - 52e6d6d613d3a3e825ac02253fe6b5a4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Set-Cookie:
+      - iTravel-443_cookie=R2535891238; path=/
+      Date:
+      - Sat, 05 Mar 2016 15:41:02 GMT
+      X-Frame-Options:
+      - DENY
+      - SAMEORIGIN
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      Content-Type:
+      - application/x-javascript;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: 'fn({"processingDurationMillis":71,"authorisedAPI":false,"success":false,"airline":"mh","validCreditCards":[],"paypal":false,"support3d":false,"departureAirport":null,"arrivalAirport":null,"apiRequired":false,"fareRules":[],"Errors":[{"code":"1","type":"","userDisplayType":1,"message":"Invalid
+        departure airport : ''Kuala_Lumpur''"}],"Warnings":[]})'
+    http_version: 
+  recorded_at: Sat, 05 Mar 2016 15:41:02 GMT
+recorded_with: VCR 3.0.1

@@ -3,7 +3,7 @@ require "spec_helper"
 describe MalaysiaAirlines, vcr: true do
   let(:from) { "KUL" }
   let(:to)   { "KCH" }
-  let(:date) { "2015-11-19" }
+  let(:date) { "2016-08-09" }
   let(:scrapper) { described_class.new(from: from, to: to, date: date) }
 
   before do
@@ -15,7 +15,7 @@ describe MalaysiaAirlines, vcr: true do
   end
 
   context "Incorrect from &/or format" do
-    let(:from) { "Kuala Lumpur" }
+    let(:from) { "Kuala_Lumpur" }
     it { expect(scrapper.fares).to eql([]) }
   end
 

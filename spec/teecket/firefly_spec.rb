@@ -3,7 +3,7 @@ require "spec_helper"
 describe Firefly, vcr: true do
   let(:from) { "SZB" }
   let(:to)   { "AOR" }
-  let(:date) { "15-11-19" }
+  let(:date) { "2016-12-31" }
   let(:scrapper) { described_class.new(from: from, to: to, date: date) }
 
   before do
