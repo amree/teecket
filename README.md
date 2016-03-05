@@ -53,6 +53,17 @@ This is an example of an output:
 | date      | String | yes       | dd-mm-yyyy, yy-mm-dd, yyyy-mm-dd, dd/mm/yyyy, etc |
 | verbose   | String | no        | verbosity                  |
 
+## Development
+
+
+Make sure you've installed all the dependencies first by running:
+
+    bundle
+
+You can use this command to test this source code:
+
+    ruby -Ilib ./bin/teecket KBR SZB 12-12-2016
+
 ## Contributing
 
 I'm using Rubocop and Hound to ensure some convention/quality for this project.
