@@ -17,22 +17,17 @@ class Teecket
     flights = %w(AirAsia Firefly MalaysiaAirlines MalindoAir)
 
     results = []
-    threads = []
     flights.each do |flight|
-      threads << Thread.new do
-        klass = Object.const_get(flight)
+      klass = Object.const_get(flight)
 
-        scrapper = klass.new(from: params[:from],
-                             to: params[:to],
-                             date: params[:date])
+      scrapper = klass.new(from: params[:from],
+                           to: params[:to],
+                           date: params[:date])
 
-        scrapper.search
+      scrapper.search
 
-        results = results + scrapper.fares
-      end
+      results = results + scrapper.fares
     end
-
-    ThreadsWait.all_waits(*threads)
 
     results
   end
