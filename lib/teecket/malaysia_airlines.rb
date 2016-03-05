@@ -21,6 +21,8 @@ class MalaysiaAirlines < Flight
   def process
     json = JSON.parse res.body.gsub(/^fn\(|\)/, "")
 
+    return if flights(json).nil?
+
     flights(json).each do |flight|
       params = if flight["flights"].count > 1
                  process_for_transit(flight)
@@ -82,6 +84,6 @@ class MalaysiaAirlines < Flight
   end
 
   def formatted_date
-    "#{date.year}-#{date.mon}-#{date.mday}"
+    "#{date.year}-#{date.strftime('%m')}-#{date.strftime('%d')}"
   end
 end

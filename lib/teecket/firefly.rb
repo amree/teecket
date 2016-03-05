@@ -98,6 +98,6 @@ class Firefly < Flight
   end
 
   def formatted_date
-    "#{date.mday}-#{date.strftime('%m')}-#{date.strftime('%y')}"
+    "#{date.strftime('%d')}-#{date.strftime('%m')}-#{date.strftime('%y')}"
   end
 end
