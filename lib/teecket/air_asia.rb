@@ -46,7 +46,7 @@ class AirAsia < Flight
     [
       "o1=#{from}",
       "d1=#{to}",
-      "dd1=#{date}",
+      "dd1=#{formatted_date}",
       "ADT=1",
       "CHD=0",
       "inl=0"
@@ -54,6 +54,6 @@ class AirAsia < Flight
   end
 
   def formatted_date
-    "#{date.mday}-#{date.strftime('%m')}-#{date.strftime('%y')}"
+    "#{date.year}-#{date.strftime('%m')}-#{date.strftime('%d')}"
   end
 end

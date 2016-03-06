@@ -35,28 +35,28 @@ http_interactions:
       Content-Length:
       - '118'
       Expires:
-      - Sat, 05 Mar 2016 15:39:59 GMT
+      - Sun, 06 Mar 2016 08:17:16 GMT
       Cache-Control:
       - max-age=0, no-cache, no-store
       Pragma:
       - no-cache
       Date:
-      - Sat, 05 Mar 2016 15:39:59 GMT
+      - Sun, 06 Mar 2016 08:17:16 GMT
       Connection:
       - keep-alive
       Set-Cookie:
-      - AALoginId=; domain=airasia.com; expires=Fri, 04-Mar-2016 15:40:00 GMT; path=/
-      - ASP.NET_SessionId=4ws0kr1hgn1ghh44rq3ejref; path=/; HttpOnly
-      - akaau=1457192999~id=35ba26bf1e98d55671befab5f18cb89b; path=/
-      - dotrez=421192202.20480.0000; path=/
-      - memberLogin=0; domain=airasia.com; expires=Fri, 04-Mar-2016 15:40:00 GMT;
+      - AALoginId=; domain=airasia.com; expires=Sat, 05-Mar-2016 08:17:16 GMT; path=/
+      - ASP.NET_SessionId=rzw0l2kwl2d3e3pmymkkyffw; path=/; HttpOnly
+      - akaau=1457252836~id=a61c49b1aad701a434a0da450b144ddc; path=/
+      - dotrez=538632714.20480.0000; path=/
+      - memberLogin=0; domain=airasia.com; expires=Sat, 05-Mar-2016 08:17:16 GMT;
         path=/
-      - sso_userid=0; domain=airasia.com; expires=Fri, 04-Mar-2016 15:40:00 GMT; path=/
-      - userLogin=0; domain=airasia.com; expires=Fri, 04-Mar-2016 15:40:00 GMT; path=/
+      - sso_userid=0; domain=airasia.com; expires=Sat, 05-Mar-2016 08:17:16 GMT; path=/
+      - userLogin=0; domain=airasia.com; expires=Sat, 05-Mar-2016 08:17:16 GMT; path=/
     body:
       encoding: UTF-8
       string: "<html><head><title>Object moved</title></head><body>\r\n<h2>Object
         moved to <a href=\"/\">here</a>.</h2>\r\n</body></html>\r\n"
     http_version: 
-  recorded_at: Sat, 05 Mar 2016 15:39:59 GMT
+  recorded_at: Sun, 06 Mar 2016 08:17:16 GMT
 recorded_with: VCR 3.0.1

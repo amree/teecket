@@ -19,13 +19,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 05 Mar 2016 15:40:26 GMT
+      - Sun, 06 Mar 2016 08:17:33 GMT
       Server:
       - Apache/2.2.23 (Fedora)
       X-Powered-By:
       - PHP/5.4.17
       Set-Cookie:
-      - PHPSESSID=7gq51c7e54l8ircq3aghgqqvg5; path=/
+      - PHPSESSID=idpodnurlu607und7bvhc2jj17; path=/
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
       Cache-Control:
@@ -165,16 +165,16 @@ http_interactions:
         width=\"50%\" class=\"td1\">\r\n\t\t\tDeparture Date*\r\n\t\t\t</td>\r\n\t\t\t<td
         class=\"td1\">\r\n\t\t\t\t<select name=\"d10\" id=\"d10\" onchange=\"setDeparture();\"><option
         value=\"\"></option><option  value=\"01\">1</option><option  value=\"02\">2</option><option
-        \ value=\"03\">3</option><option  value=\"04\">4</option><option selected
-        value=\"05\">5</option><option  value=\"06\">6</option><option  value=\"07\">7</option><option
-        \ value=\"08\">8</option><option  value=\"09\">9</option><option  value=\"10\">10</option><option
-        \ value=\"11\">11</option><option  value=\"12\">12</option><option  value=\"13\">13</option><option
-        \ value=\"14\">14</option><option  value=\"15\">15</option><option  value=\"16\">16</option><option
-        \ value=\"17\">17</option><option  value=\"18\">18</option><option  value=\"19\">19</option><option
-        \ value=\"20\">20</option><option  value=\"21\">21</option><option  value=\"22\">22</option><option
-        \ value=\"23\">23</option><option  value=\"24\">24</option><option  value=\"25\">25</option><option
-        \ value=\"26\">26</option><option  value=\"27\">27</option><option  value=\"28\">28</option><option
-        \ value=\"29\">29</option><option  value=\"30\">30</option><option  value=\"31\">31</option></select><select
+        \ value=\"03\">3</option><option  value=\"04\">4</option><option  value=\"05\">5</option><option
+        selected value=\"06\">6</option><option  value=\"07\">7</option><option  value=\"08\">8</option><option
+        \ value=\"09\">9</option><option  value=\"10\">10</option><option  value=\"11\">11</option><option
+        \ value=\"12\">12</option><option  value=\"13\">13</option><option  value=\"14\">14</option><option
+        \ value=\"15\">15</option><option  value=\"16\">16</option><option  value=\"17\">17</option><option
+        \ value=\"18\">18</option><option  value=\"19\">19</option><option  value=\"20\">20</option><option
+        \ value=\"21\">21</option><option  value=\"22\">22</option><option  value=\"23\">23</option><option
+        \ value=\"24\">24</option><option  value=\"25\">25</option><option  value=\"26\">26</option><option
+        \ value=\"27\">27</option><option  value=\"28\">28</option><option  value=\"29\">29</option><option
+        \ value=\"30\">30</option><option  value=\"31\">31</option></select><select
         name=\"d11\" id=\"d11\" onchange=\"setDeparture();\"><option value=\"\"></option><option
         \ value=\"01\">Jan</option><option  value=\"02\">Feb</option><option selected
         value=\"03\">Mar</option><option  value=\"04\">Apr</option><option  value=\"05\">May</option><option
@@ -185,15 +185,15 @@ http_interactions:
         name=\"d10\" id=\"d10\" onchange=\"getDepartDay();\"></select>\r\n\t\t\t\t<select
         name=\"d11\" id=\"d11\" onchange=\"getDepartMonthYear();\"></select>-->\r\n\t\t\t\t<input
         style=\"display:none\" type=\"text\" name=\"departuredate\" id=\"departuredate\"
-        value=\"05-03-2016\" class=\"date\"  readonly=\"true\" onclick=\"showDatePicker('datepicker.departuredate')\"/>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr
+        value=\"06-03-2016\" class=\"date\"  readonly=\"true\" onclick=\"showDatePicker('datepicker.departuredate')\"/>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr
         id=\"returndatediv\">\r\n\t\t\t<td width=\"50%\" class=\"td1\">\r\n\t\t\tReturn
         Date*\r\n\t\t\t</td>\r\n\t\t\t<td class=\"td1\">\r\n\t\t\t\t<select name=\"d20\"
         id=\"d20\" onchange=\"setReturn();\"><option value=\"\"></option><option  value=\"01\">1</option><option
         \ value=\"02\">2</option><option  value=\"03\">3</option><option  value=\"04\">4</option><option
         \ value=\"05\">5</option><option  value=\"06\">6</option><option  value=\"07\">7</option><option
         \ value=\"08\">8</option><option  value=\"09\">9</option><option  value=\"10\">10</option><option
-        \ value=\"11\">11</option><option selected value=\"12\">12</option><option
-        \ value=\"13\">13</option><option  value=\"14\">14</option><option  value=\"15\">15</option><option
+        \ value=\"11\">11</option><option  value=\"12\">12</option><option selected
+        value=\"13\">13</option><option  value=\"14\">14</option><option  value=\"15\">15</option><option
         \ value=\"16\">16</option><option  value=\"17\">17</option><option  value=\"18\">18</option><option
         \ value=\"19\">19</option><option  value=\"20\">20</option><option  value=\"21\">21</option><option
         \ value=\"22\">22</option><option  value=\"23\">23</option><option  value=\"24\">24</option><option
@@ -210,7 +210,7 @@ http_interactions:
         name=\"d20\" id=\"d20\" onchange=\"getReturnDay(this);\" class=\"select11\"></select>\r\n\t\t\t\t<select
         name=\"d21\" id=\"d21\" onchange=\"getReturnMonthYear();\" class=\"select11\"></select>-->\r\n\t\t\t\t<input
         style=\"display:none\" type=\"text\" name=\"returndate\" id=\"returndate\"
-        value=\"12-03-2016\" class=\"date\"  readonly=\"true\" onclick=\"showDatePicker('datepicker.returndate')\"/>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td
+        value=\"13-03-2016\" class=\"date\"  readonly=\"true\" onclick=\"showDatePicker('datepicker.returndate')\"/>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td
         width=\"50%\" class=\"td1\">\r\n\t\t\tNo of Guests*\r\n\t\t\t</td>\r\n\t\t\t<td
         class=\"td1\">\r\n\t\t\t\t<select name=\"adult\" id=\"adult\" class=\"select1\">\r\n\t\t\t\t<option
         value=\"1\">1</option>\r\n\t\t\t\t<option value=\"2\">2</option>\r\n\t\t\t\t<option
@@ -284,7 +284,7 @@ http_interactions:
         (!isDate(jQuery(\"#departuredate\").val()))\r\n\t{\r\n\t\ta(\"Departure date
         is invalid.\");\r\n\t\treturn false;\r\n\t}\r\n\telse\r\n\t{\r\n\t\tdd = jQuery(\"#departuredate\").val().substring(0,2);\r\n\t\tmm
         = jQuery(\"#departuredate\").val().substring(3,5);\r\n\t\tyyyy = jQuery(\"#departuredate\").val().substring(6,10);\r\n\t\tdeparturedate
-        = (yyyy + mm + dd) * 1;\r\n\t\tif (departuredate < 20160305)\r\n\t\t{\r\n\t\t\ta(\"Departure
+        = (yyyy + mm + dd) * 1;\r\n\t\tif (departuredate < 20160306)\r\n\t\t{\r\n\t\t\ta(\"Departure
         date is invalid.\");\r\n\t\t\treturn false;\r\n\t\t}\r\n\t}\r\n\tif (jQuery(\"#type\").val()
         == 1)\r\n\t{\r\n\t\tif (!isDate(jQuery(\"#returndate\").val()))\r\n\t\t{\r\n\t\t\ta(\"Return
         date is invalid.\");\r\n\t\t\treturn false;\r\n\t\t}\r\n\t\tif (toDateObject(jQuery(\"#returndate\").val())
@@ -405,16 +405,16 @@ http_interactions:
         0) {\r\n\t\t\t\t\t$('#footerishe').show();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\t$(\"select\").addClass(\"select1\");\r\n\t\t\t$(\"input[type='text']\").addClass(\"input1\");
         \ \r\n\t\t\t$(\"input[type='number']\").addClass(\"input1\");\r\n            $(\"input[type='tel']\").addClass(\"input1\");\r\n\t\t\t$(\"input[type='password']\").addClass(\"input1\");\r\n\t\t\t$(\"input[type='submit']\").addClass(\"button1\");\r\n\t\t\t$(\"input[type='button']\").addClass(\"button1\");\r\n\t\t});\r\n\t</script>\r\n\r\n</body>\r\n</html>\r\n"
     http_version: 
-  recorded_at: Sat, 05 Mar 2016 15:40:28 GMT
+  recorded_at: Sun, 06 Mar 2016 08:17:34 GMT
 - request:
     method: post
     uri: http://fireflymobile.me-tech.com.my/fylive3/search.php
     body:
       encoding: US-ASCII
-      string: action=search&type=2&departing=ABC&arriving=AOR&d10=31&d11=12&d12=16&departuredate=31-12-16&d20=31&d21=12&d22=16&returndate=31-12-16&adult=1&infant=0
+      string: action=search&type=2&departing=ABC&arriving=AOR&d10=31&d11=12&d12=16&departuredate=31-12-2016&d20=31&d21=12&d22=16&returndate=31-12-2016&adult=1&infant=0
     headers:
       Cookie:
-      - PHPSESSID=7gq51c7e54l8ircq3aghgqqvg5
+      - PHPSESSID=idpodnurlu607und7bvhc2jj17
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -427,7 +427,7 @@ http_interactions:
       message: Found
     headers:
       Date:
-      - Sat, 05 Mar 2016 15:40:28 GMT
+      - Sun, 06 Mar 2016 08:17:35 GMT
       Server:
       - Apache/2.2.23 (Fedora)
       X-Powered-By:
@@ -450,7 +450,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Sat, 05 Mar 2016 15:40:29 GMT
+  recorded_at: Sun, 06 Mar 2016 08:17:36 GMT
 - request:
     method: get
     uri: http://fireflymobile.me-tech.com.my/fylive3/select.php
@@ -459,7 +459,7 @@ http_interactions:
       string: ''
     headers:
       Cookie:
-      - PHPSESSID=7gq51c7e54l8ircq3aghgqqvg5
+      - PHPSESSID=idpodnurlu607und7bvhc2jj17
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -472,7 +472,7 @@ http_interactions:
       message: Found
     headers:
       Date:
-      - Sat, 05 Mar 2016 15:40:29 GMT
+      - Sun, 06 Mar 2016 08:17:36 GMT
       Server:
       - Apache/2.2.23 (Fedora)
       X-Powered-By:
@@ -495,5 +495,5 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Sat, 05 Mar 2016 15:40:32 GMT
+  recorded_at: Sun, 06 Mar 2016 08:17:39 GMT
 recorded_with: VCR 3.0.1

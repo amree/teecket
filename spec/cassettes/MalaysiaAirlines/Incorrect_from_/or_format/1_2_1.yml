@@ -21,9 +21,9 @@ http_interactions:
       message: OK
     headers:
       Set-Cookie:
-      - iTravel-443_cookie=R2535891238; path=/
+      - iTravel-443_cookie=R2534705317; path=/
       Date:
-      - Sat, 05 Mar 2016 15:41:02 GMT
+      - Sun, 06 Mar 2016 08:18:04 GMT
       X-Frame-Options:
       - DENY
       - SAMEORIGIN
@@ -45,8 +45,8 @@ http_interactions:
       - chunked
     body:
       encoding: ASCII-8BIT
-      string: 'fn({"processingDurationMillis":71,"authorisedAPI":false,"success":false,"airline":"mh","validCreditCards":[],"paypal":false,"support3d":false,"departureAirport":null,"arrivalAirport":null,"apiRequired":false,"fareRules":[],"Errors":[{"code":"1","type":"","userDisplayType":1,"message":"Invalid
+      string: 'fn({"processingDurationMillis":0,"authorisedAPI":false,"success":false,"airline":"mh","validCreditCards":[],"paypal":false,"support3d":false,"departureAirport":null,"arrivalAirport":null,"apiRequired":false,"fareRules":[],"Errors":[{"code":"1","type":"","userDisplayType":1,"message":"Invalid
         departure airport : ''Kuala_Lumpur''"}],"Warnings":[]})'
     http_version: 
-  recorded_at: Sat, 05 Mar 2016 15:41:02 GMT
+  recorded_at: Sun, 06 Mar 2016 08:18:04 GMT
 recorded_with: VCR 3.0.1

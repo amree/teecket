@@ -1,5 +1,3 @@
-require "pry"
-
 module Selectors
   module Firefly
     def depart_at_selector(flight)
