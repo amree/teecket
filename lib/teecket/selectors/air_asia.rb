@@ -1,3 +1,5 @@
+require "pry"
+
 module Selectors
   module AirAsia
     def flights(html)
@@ -10,16 +12,16 @@ module Selectors
 
     def depart_at_selector(html)
       datetime_formatter(
-        html.css("td:first td")[1].text.delete(" ").strip[0..4])
+        html.css("td:first td.avail-table-detail")[0].text.strip[0..4])
     end
 
     def arrive_at_selector(html)
       datetime_formatter(
-        html.css("td:first td")[3].text.delete(" ").strip[0..4])
+        html.css("td:first td.avail-table-detail")[1].text.strip[0..4])
     end
 
     def fare_selector(html)
-      html.css("td:last div.avail-fare-price").text.strip.split(" ").first
+      html.css("> td.LF").text.strip.split(" ").first
     end
 
     def flight_number_selector(html)
