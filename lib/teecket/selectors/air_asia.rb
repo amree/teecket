@@ -1,5 +1,3 @@
-require "pry"
-
 module Selectors
   module AirAsia
     def flights(html)
