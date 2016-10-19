@@ -26,6 +26,11 @@ module Selectors
       html.css("td:first div.carrier-hover-bold").first.text.delete(" ")
     end
 
+# TEST TEST
+    def seats_selector(html)
+      html.css("div.avail-table-seats-remaining").text.strip.split(" ").first
+    end
+
     def datetime_formatter(datetime)
       DateTime.parse(datetime).strftime("%I:%M %p")
     end

@@ -2,10 +2,21 @@
 
 require "teecket"
 require "teecket/printer"
+require 'date'
 
-if ARGV.count == 3
-  output = Teecket.search(from: ARGV[0], to: ARGV[1], date: ARGV[2])
-  puts Printer.table(output)
+i = 0
+
+if ARGV.count == 4
+
+  days = Integer(ARGV[3])
+  date = DateTime.parse(ARGV[2])
+
+  while i < days
+    puts date.next_day(i).strftime('%F')
+    Teecket.search(from: ARGV[0], to: ARGV[1], date: date.next_day(i).strftime('%F'))
+    i += 1
+  end
+
 else
-  puts "Example: teecket KBR KUL 31-12-2015"
+  puts "Example: teecket KBR KUL 31-12-2015 7"
 end

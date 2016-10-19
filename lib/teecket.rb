@@ -13,7 +13,8 @@ require "teecket/firefly"
 
 class Teecket
   def self.search(params)
-    flights = %w(AirAsia Firefly MalaysiaAirlines MalindoAir)
+    # flights = %w(AirAsia Firefly MalaysiaAirlines MalindoAir)
+    flights = %w(AirAsia) # Get from AirAsia only 
 
     results = []
     flights.each do |flight|
@@ -28,6 +29,6 @@ class Teecket
       results += scrapper.fares
     end
 
-    results
+    puts Printer.table(results)
   end
 end
