@@ -3,14 +3,13 @@ require "terminal-table"
 class Printer
   def self.table(rows = [])
     headings = [
-      "Flight",
       "Flight #",
-      "Transit",
       "Origin",
       "Destination",
       "Depart",
       "Arrive",
-      "Fare (RM)"]
+      "Seats Left",
+      "Fare (PHP)"]
 
     rows.each { |row| row[:fare] = row[:fare].rjust(9, " ") }
 

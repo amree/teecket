@@ -36,13 +36,12 @@ class Flight
   end
 
   def add_to_fares(params)
-    fares << { flight_name: params[:flight_name],
-               flight_number: params[:flight_number],
-               transit: params[:transit],
+    fares << { flight_number: params[:flight_number],
                origin: params[:origin],
                destination: params[:destination],
                depart_at: params[:depart_at],
                arrive_at: params[:arrive_at],
+               seats: params[:seats],
                fare: params[:fare] }
   end
 
