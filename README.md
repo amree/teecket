@@ -1,3 +1,7 @@
+# NOTE
+
+**This repository is not being maintained anymore. Sorry for the inconvenience this may have caused.**
+
 ## Welcome to Teecket
 
 Teecket is a gem that will search from AirAsia, Firefly, Malaysia Airlines and
